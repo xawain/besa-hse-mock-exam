@@ -6,6 +6,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>BESA HSE Mock Exam — Craft &amp; Operatives</title>
+<link rel="icon" type="image/png" sizes="32x32" href="dbx1-brand-assets/dbx1-favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="dbx1-brand-assets/dbx1-favicon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="dbx1-brand-assets/dbx1-favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -15,7 +18,8 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-size:16px;line-height:1.6;min-height:100vh}
 .nav{background:rgba(14,17,23,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px}
 .nav-brand{display:flex;align-items:center;gap:10px}
-.nav-logo{width:38px;height:38px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:#fff;letter-spacing:.5px}
+.nav-logo{width:38px;height:38px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.nav-logo img{width:100%;height:100%;object-fit:contain;display:block}
 .nav-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:.5px}
 .nav-sub{font-size:11px;color:var(--dim);margin-top:-2px}
 .nav-badge{background:var(--red);color:#fff;font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;letter-spacing:.5px}
@@ -182,7 +186,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 
 <nav class="nav">
   <div class="nav-brand">
-    <div class="nav-logo">B</div>
+    <div class="nav-logo"><img src="dbx1-brand-assets/dbx1-logo-transparent.png" alt="dbX1"></div>
     <div>
       <div class="nav-title">BESA HSE Mock Exam</div>
       <div class="nav-sub">Craft &amp; Operatives SKILLcard</div>
