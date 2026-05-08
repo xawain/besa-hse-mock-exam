@@ -25,11 +25,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 .hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.05;color:var(--txt);margin-bottom:.55rem}
 .hero-title span{color:var(--red-l)}
 .hero-desc{color:var(--muted);font-size:15px;max-width:600px;margin:0 auto 1rem}
-.hero-stats{display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:640px;margin:0 auto;width:100%}
-.hero-stat{flex:1;min-width:90px;padding:.65rem 1.25rem;text-align:center;border-right:1px solid var(--border)}
-.hero-stat:last-child{border-right:none}
-.stat-val{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:800;color:var(--gold-l);display:block}
-.stat-lbl{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
 .section{padding:1.25rem 1.5rem 2rem;max-width:920px;margin:0 auto}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--txt);margin-bottom:.75rem;display:flex;align-items:center;gap:10px}
 .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
@@ -128,7 +123,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 .btn-ghost:hover{border-color:var(--border2);color:var(--txt)}
 .site-footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;font-size:12px;color:var(--dim);margin-top:3rem}
 .site-footer a{color:var(--dim);text-decoration:underline}
-@media(max-width:540px){.hero{padding:1.6rem 1rem 1.25rem}.hero-stats{flex-direction:column}.hero-stat{border-right:none;border-bottom:1px solid var(--border)}.hero-stat:last-child{border-bottom:none}.exam-grid{grid-template-columns:1fr}.nav-badge{display:none}}
+@media(max-width:540px){.hero{padding:1.6rem 1rem 1.25rem}.exam-grid{grid-template-columns:1fr}.nav-badge{display:none}}
 </style>
 </head>
 <body>
@@ -149,12 +144,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
     <div class="hero-eyebrow">✦ Free Practice Tool</div>
     <h1 class="hero-title">BESA <span>Health, Safety &amp;</span><br>Environment Mock Exams</h1>
     <p class="hero-desc">Prepare for your official BESA HSE Test for Craft &amp; Operatives. Six timed mock exams matching the real test format — 50 questions, 45 minutes, 90% pass mark.</p>
-    <div class="hero-stats">
-      <div class="hero-stat"><span class="stat-val">6</span><span class="stat-lbl">Mock Exams</span></div>
-      <div class="hero-stat"><span class="stat-val">300</span><span class="stat-lbl">Questions</span></div>
-      <div class="hero-stat"><span class="stat-val">45m</span><span class="stat-lbl">Per Exam</span></div>
-      <div class="hero-stat"><span class="stat-val">90%</span><span class="stat-lbl">Pass Mark</span></div>
-    </div>
   </section>
 
   <div class="section">
