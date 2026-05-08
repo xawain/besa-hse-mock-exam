@@ -720,8 +720,9 @@ function renderQuestion(){
     document.getElementById('feedback-text').textContent=q.e;
   }else{fb.className='feedback-box';}
   const nb=document.getElementById('next-btn');
-  if(currentIndex===total-1){nb.textContent=answered?'Finish Exam →':'Skip & Finish →';}
-  else{nb.textContent=answered?'Next →':'Skip →';}
+  nb.disabled=!answered;
+  if(currentIndex===total-1){nb.textContent=answered?'Finish Exam →':'Answer to finish';}
+  else{nb.textContent=answered?'Next →':'Answer to continue';}
   document.getElementById('prev-btn').disabled=currentIndex===0;
   updateDots();
 }
