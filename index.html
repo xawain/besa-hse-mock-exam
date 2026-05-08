@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-size:16px;line-height:1.6;min-height:100vh}
 .nav{background:rgba(14,17,23,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px}
 .nav-brand{display:flex;align-items:center;gap:10px}
-.nav-logo{width:82px;height:38px;background:#fff;border:1px solid rgba(255,255,255,.22);border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px}
+.nav-logo{width:82px;height:42px;display:flex;align-items:center;justify-content:center;overflow:visible}
 .nav-logo img{width:100%;height:100%;object-fit:contain;display:block}
 .nav-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:.5px}
 .nav-sub{font-size:11px;color:var(--dim);margin-top:-2px}
@@ -146,7 +146,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 }
 @media(max-width:620px){
   .nav{height:56px}
-  .nav-logo{width:74px;height:34px}
+  .nav-logo{width:76px;height:38px}
   .nav-title{font-size:16px}
   .nav-sub{font-size:10px}
   .nav-badge{display:none}
