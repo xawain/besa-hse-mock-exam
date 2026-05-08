@@ -19,37 +19,37 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 .nav-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:.5px}
 .nav-sub{font-size:11px;color:var(--dim);margin-top:-2px}
 .nav-badge{background:var(--red);color:#fff;font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;letter-spacing:.5px}
-.hero{padding:2.2rem 1.5rem 1.6rem;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(192,39,45,.07) 0%,transparent 60%);border-bottom:1px solid var(--border)}
+.hero{padding:1.45rem 1.5rem 1.2rem;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(192,39,45,.07) 0%,transparent 60%);border-bottom:1px solid var(--border)}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(192,39,45,.13) 0%,transparent 70%);pointer-events:none}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(192,39,45,.15);border:1px solid rgba(192,39,45,.3);color:#E8747A;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:1rem}
-.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;color:var(--txt);margin-bottom:.75rem}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(192,39,45,.15);border:1px solid rgba(192,39,45,.3);color:#E8747A;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:.65rem}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.05;color:var(--txt);margin-bottom:.55rem}
 .hero-title span{color:var(--red-l)}
-.hero-desc{color:var(--muted);font-size:15px;max-width:600px;margin:0 auto 1.25rem}
+.hero-desc{color:var(--muted);font-size:15px;max-width:600px;margin:0 auto 1rem}
 .hero-stats{display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:640px;margin:0 auto;width:100%}
-.hero-stat{flex:1;min-width:90px;padding:.85rem 1.25rem;text-align:center;border-right:1px solid var(--border)}
+.hero-stat{flex:1;min-width:90px;padding:.65rem 1.25rem;text-align:center;border-right:1px solid var(--border)}
 .hero-stat:last-child{border-right:none}
 .stat-val{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:800;color:var(--gold-l);display:block}
 .stat-lbl{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
-.section{padding:1.5rem 1.5rem 2rem;max-width:920px;margin:0 auto}
-.section-title{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--txt);margin-bottom:1rem;display:flex;align-items:center;gap:10px}
+.section{padding:1.25rem 1.5rem 2rem;max-width:920px;margin:0 auto}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--txt);margin-bottom:.75rem;display:flex;align-items:center;gap:10px}
 .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .source-note{background:var(--info-bg);border:1px solid rgba(96,165,250,.2);border-radius:10px;padding:1rem 1.25rem;font-size:13px;color:var(--muted);margin-top:1.5rem}
 .source-note strong{color:var(--info)}
-.topics-banner{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.5rem;margin-bottom:1.25rem}
-.topics-banner h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.75rem}
+.topics-banner{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.8rem 1.5rem;margin-bottom:1rem}
+.topics-banner h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.55rem}
 .topics-list{display:flex;flex-wrap:wrap;gap:8px}
 .topic-pill{background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--info);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px}
-.exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1rem}
-.exam-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.5rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:.8rem 1rem}
+.exam-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.8rem 1.5rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
 .exam-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform .2s}
 .exam-card:hover{border-color:rgba(192,39,45,.4);background:var(--card2)}
 .exam-card:hover::before{transform:scaleY(1)}
-.exam-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.exam-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.4rem}
 .exam-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;color:var(--red-l)}
 .exam-tag{font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;background:rgba(192,39,45,.12);color:#E8747A;border:1px solid rgba(192,39,45,.2);padding:3px 8px;border-radius:4px}
-.exam-card-title{font-weight:600;font-size:14px;margin-bottom:.4rem}
+.exam-card-title{font-weight:600;font-size:14px;margin-bottom:.25rem}
 .exam-card-info{font-size:12px;color:var(--dim)}
-.exam-start-btn{margin-top:.85rem;width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;padding:9px 10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:.5px;cursor:pointer;transition:background .15s}
+.exam-start-btn{margin-top:.65rem;width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;padding:8px 10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:.5px;cursor:pointer;transition:background .15s}
 .exam-start-btn:hover{background:var(--red-l)}
 #exam-screen{display:none}
 .exam-header{background:var(--card);border-bottom:1px solid var(--border);padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;position:sticky;top:60px;z-index:90}
