@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>BESA HSE Mock Exam — Craft &amp; Operatives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--red:#C0272D;--red-d:#8B1A1E;--red-l:#E8474D;--gold:#F5A623;--gold-l:#FBBF47;--bg:#0E1117;--card:#161B24;--card2:#1C2333;--txt:#F0F2F5;--muted:#9AA3B0;--dim:#5A6270;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.15);--ok:#22C55E;--ok-bg:rgba(34,197,94,.12);--bad:#EF4444;--bad-bg:rgba(239,68,68,.12);--info:#60A5FA;--info-bg:rgba(96,165,250,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-size:16px;line-height:1.6;min-height:100vh}
+.nav{background:rgba(14,17,23,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-logo{width:38px;height:38px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:#fff;letter-spacing:.5px}
+.nav-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:.5px}
+.nav-sub{font-size:11px;color:var(--dim);margin-top:-2px}
+.nav-badge{background:var(--red);color:#fff;font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;letter-spacing:.5px}
+.hero{padding:2.2rem 1.5rem 1.6rem;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(192,39,45,.07) 0%,transparent 60%);border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(192,39,45,.13) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(192,39,45,.15);border:1px solid rgba(192,39,45,.3);color:#E8747A;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:1rem}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;color:var(--txt);margin-bottom:.75rem}
+.hero-title span{color:var(--red-l)}
+.hero-desc{color:var(--muted);font-size:15px;max-width:600px;margin:0 auto 1.25rem}
+.hero-stats{display:flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:640px;margin:0 auto;width:100%}
+.hero-stat{flex:1;min-width:90px;padding:.85rem 1.25rem;text-align:center;border-right:1px solid var(--border)}
+.hero-stat:last-child{border-right:none}
+.stat-val{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:800;color:var(--gold-l);display:block}
+.stat-lbl{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
+.section{padding:1.5rem 1.5rem 2rem;max-width:920px;margin:0 auto}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--txt);margin-bottom:1rem;display:flex;align-items:center;gap:10px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.source-note{background:var(--info-bg);border:1px solid rgba(96,165,250,.2);border-radius:10px;padding:1rem 1.25rem;font-size:13px;color:var(--muted);margin-top:1.5rem}
+.source-note strong{color:var(--info)}
+.topics-banner{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.5rem;margin-bottom:1.25rem}
+.topics-banner h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.75rem}
+.topics-list{display:flex;flex-wrap:wrap;gap:8px}
+.topic-pill{background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--info);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1rem}
+.exam-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.5rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.exam-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform .2s}
+.exam-card:hover{border-color:rgba(192,39,45,.4);background:var(--card2)}
+.exam-card:hover::before{transform:scaleY(1)}
+.exam-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.exam-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;color:var(--red-l)}
+.exam-tag{font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;background:rgba(192,39,45,.12);color:#E8747A;border:1px solid rgba(192,39,45,.2);padding:3px 8px;border-radius:4px}
+.exam-card-title{font-weight:600;font-size:14px;margin-bottom:.4rem}
+.exam-card-info{font-size:12px;color:var(--dim)}
+.exam-start-btn{margin-top:.85rem;width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;padding:9px 10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:.5px;cursor:pointer;transition:background .15s}
+.exam-start-btn:hover{background:var(--red-l)}
+#exam-screen{display:none}
+.exam-header{background:var(--card);border-bottom:1px solid var(--border);padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;position:sticky;top:60px;z-index:90}
+.exam-progress-wrap{flex:1;min-width:200px}
+.progress-label{font-size:11px;color:var(--dim);display:flex;justify-content:space-between;margin-bottom:6px}
+.progress-bar-bg{background:rgba(255,255,255,.07);border-radius:4px;height:6px}
+.progress-bar-fill{background:var(--red);border-radius:4px;height:6px;transition:width .3s}
+.timer-wrap{display:flex;align-items:center;gap:8px;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:6px 14px}
+.timer-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;min-width:64px;text-align:center}
+.timer-val.warn{color:var(--bad)}
+.timer-lbl{font-size:11px;color:var(--dim)}
+.quit-btn{background:none;border:1px solid var(--border);color:var(--dim);border-radius:7px;padding:6px 14px;font-size:13px;cursor:pointer;transition:all .15s}
+.quit-btn:hover{border-color:var(--bad);color:var(--bad)}
+.question-area{max-width:780px;margin:0 auto;padding:2rem 1.5rem}
+.q-number{font-size:12px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:.6rem}
+.q-topic-tag{display:inline-block;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.25);color:var(--gold-l);font-size:11px;font-weight:600;padding:2px 10px;border-radius:4px;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.5px}
+.q-text{font-size:1.1rem;font-weight:500;line-height:1.55;margin-bottom:1.75rem}
+.options{display:flex;flex-direction:column;gap:10px}
+.option{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;cursor:pointer;transition:all .15s;display:flex;align-items:flex-start;gap:12px}
+.option:hover:not(.disabled){border-color:rgba(192,39,45,.45);background:var(--card2)}
+.option.selected{border-color:var(--red);background:rgba(192,39,45,.08)}
+.option.correct{border-color:var(--ok);background:var(--ok-bg)}
+.option.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.option.disabled{cursor:default}
+.opt-letter{width:28px;height:28px;border-radius:6px;flex-shrink:0;background:rgba(255,255,255,.06);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;color:var(--muted);transition:all .15s}
+.option.selected .opt-letter{background:var(--red);border-color:var(--red);color:#fff}
+.option.correct .opt-letter{background:var(--ok);border-color:var(--ok);color:#fff}
+.option.wrong .opt-letter{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt-text{font-size:15px;line-height:1.5}
+.feedback-box{margin-top:1.25rem;border-radius:10px;padding:1rem 1.25rem;font-size:14px;display:none}
+.feedback-box.show{display:block}
+.feedback-box.pass-fb{background:var(--ok-bg);border:1px solid rgba(34,197,94,.25)}
+.feedback-box.fail-fb{background:var(--bad-bg);border:1px solid rgba(239,68,68,.25)}
+.feedback-title{font-weight:700;font-size:14px;margin-bottom:4px}
+.pass-fb .feedback-title{color:var(--ok)}
+.fail-fb .feedback-title{color:var(--bad)}
+.feedback-text{color:var(--muted)}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;gap:1rem}
+.btn-secondary{background:var(--card2);border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-secondary:hover{border-color:var(--border2);color:var(--txt)}
+.btn-primary{background:var(--red);color:#fff;border:none;border-radius:8px;padding:11px 28px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:.5px;cursor:pointer;transition:background .15s}
+.btn-primary:hover{background:var(--red-l)}
+.btn-primary:disabled{background:var(--dim);cursor:not-allowed}
+.q-dot-map{display:flex;flex-wrap:wrap;gap:5px;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.q-dot{width:22px;height:22px;border-radius:4px;background:var(--card2);border:1px solid var(--border);font-size:9px;font-weight:600;color:var(--dim);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .1s}
+.q-dot:hover{border-color:var(--border2)}
+.q-dot.active{border-color:var(--red);color:var(--red)}
+.q-dot.ans-ok{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.4);color:var(--ok)}
+.q-dot.ans-bad{background:rgba(239,68,68,.18);border-color:rgba(239,68,68,.4);color:var(--bad)}
+#results-screen{display:none;max-width:760px;margin:0 auto;padding:2rem 1.5rem}
+.result-hero{text-align:center;padding:2.5rem 1.5rem;background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.result-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(192,39,45,.1) 0%,transparent 70%);pointer-events:none}
+.result-verdict{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:800;letter-spacing:1px;margin-bottom:.25rem}
+.result-verdict.pass{color:var(--ok)}
+.result-verdict.fail{color:var(--bad)}
+.result-score{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;color:var(--muted);margin-bottom:.5rem}
+.result-msg{font-size:14px;color:var(--dim);max-width:420px;margin:0 auto}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:1.5rem}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.rc-val{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;display:block}
+.rc-val.g{color:var(--ok)}.rc-val.r{color:var(--bad)}.rc-val.y{color:var(--gold-l)}
+.rc-lbl{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
+.review-list{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem}
+.review-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem}
+.review-item.r-ok{border-left:4px solid var(--ok)}
+.review-item.r-bad{border-left:4px solid var(--bad)}
+.ri-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ri-q{font-size:12px;color:var(--dim)}
+.ri-icon.ok{color:var(--ok)}.ri-icon.bad{color:var(--bad)}
+.ri-text{font-size:14px;margin-bottom:5px}
+.ri-answer{font-size:13px;color:var(--muted)}
+.ri-ok-ans{color:var(--ok);font-weight:600}
+.ri-my-ans{color:var(--bad);font-weight:600}
+.results-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-ghost{background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;flex:1;transition:all .15s;text-align:center}
+.btn-ghost:hover{border-color:var(--border2);color:var(--txt)}
+.site-footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;font-size:12px;color:var(--dim);margin-top:3rem}
+.site-footer a{color:var(--dim);text-decoration:underline}
+@media(max-width:540px){.hero{padding:1.6rem 1rem 1.25rem}.hero-stats{flex-direction:column}.hero-stat{border-right:none;border-bottom:1px solid var(--border)}.hero-stat:last-child{border-bottom:none}.exam-grid{grid-template-columns:1fr}.nav-badge{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">B</div>
+    <div>
+      <div class="nav-title">BESA HSE Mock Exam</div>
+      <div class="nav-sub">Craft &amp; Operatives SKILLcard</div>
+    </div>
+  </div>
+  <span class="nav-badge">MOCK EXAM</span>
+</nav>
+
+<div id="home-screen">
+  <section class="hero">
+    <div class="hero-eyebrow">✦ Free Practice Tool</div>
+    <h1 class="hero-title">BESA <span>Health, Safety &amp;</span><br>Environment Mock Exams</h1>
+    <p class="hero-desc">Prepare for your official BESA HSE Test for Craft &amp; Operatives. Six timed mock exams matching the real test format — 50 questions, 45 minutes, 90% pass mark.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="stat-val">6</span><span class="stat-lbl">Mock Exams</span></div>
+      <div class="hero-stat"><span class="stat-val">300</span><span class="stat-lbl">Questions</span></div>
+      <div class="hero-stat"><span class="stat-val">45m</span><span class="stat-lbl">Per Exam</span></div>
+      <div class="hero-stat"><span class="stat-val">90%</span><span class="stat-lbl">Pass Mark</span></div>
+    </div>
+  </section>
+
+  <div class="section">
+    <div class="topics-banner">
+      <h3>Topics Covered — 6 Core BESA Modules</h3>
+      <div class="topics-list">
+        <span class="topic-pill">Risk Assessment</span>
+        <span class="topic-pill">Manual Handling</span>
+        <span class="topic-pill">Working at Height</span>
+        <span class="topic-pill">Construction Health Risks</span>
+        <span class="topic-pill">Plant &amp; Equipment</span>
+        <span class="topic-pill">Building Safety Act</span>
+      </div>
+    </div>
+
+    <div class="section-title">Choose a Mock Exam</div>
+    <div class="exam-grid" id="exam-grid"></div>
+
+    <div class="source-note">
+      <strong>Question source:</strong> Questions are drawn from and based on the official CITB HS&amp;E test question bank for operatives (GT100), adapted to the BESA SKILLcard syllabus for HVAC craft operatives, covering all 6 core BESA modules. The real BESA HSE Test costs £24+VAT at <a href="https://besa.academy/local/intellicart/view.php?id=17" target="_blank" style="color:var(--info)">besa.academy →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    D.Brown aka Tufi &nbsp;·&nbsp; Powered by dbX1 &nbsp;·&nbsp; Based on CITB GT100 question bank &amp; BESA HSE Craft &amp; Operative SKILLcard syllabus &nbsp;·&nbsp; Updated 2025<br>
+    <a href="https://besa.academy" target="_blank">besa.academy</a> &nbsp;·&nbsp; <a href="https://www.skillcard.org.uk" target="_blank">skillcard.org.uk</a> &nbsp;·&nbsp; <a href="https://www.citb.co.uk" target="_blank">citb.co.uk</a><br>
+    <small>© 2025 D.Brown (dbX1). All rights reserved. Unauthorised copying or reproduction is prohibited.</small>
+  </footer>
+</div>
+
+<div id="exam-screen">
+  <div class="exam-header">
+    <div class="exam-progress-wrap">
+      <div class="progress-label">
+        <span id="q-counter">Question 1 of 50</span>
+        <span id="score-live">Score: 0</span>
+      </div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill" style="width:2%"></div></div>
+    </div>
+    <div class="timer-wrap">
+      <div>
+        <div class="timer-val" id="timer-val">45:00</div>
+        <div class="timer-lbl">remaining</div>
+      </div>
+    </div>
+    <button class="quit-btn" onclick="quitExam()">Quit</button>
+  </div>
+  <div class="question-area">
+    <div class="q-number" id="q-number-label"></div>
+    <div class="q-topic-tag" id="q-topic-tag"></div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="options-container"></div>
+    <div class="feedback-box" id="feedback-box">
+      <div class="feedback-title" id="feedback-title"></div>
+      <div class="feedback-text" id="feedback-text"></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-secondary" id="prev-btn" onclick="prevQuestion()">← Previous</button>
+      <button class="btn-primary" id="next-btn" onclick="nextQuestion()">Next →</button>
+    </div>
+    <div class="q-dot-map" id="q-dot-map"></div>
+  </div>
+</div>
+
+<div id="results-screen">
+  <div class="result-hero">
+    <div class="result-verdict" id="r-verdict"></div>
+    <div class="result-score" id="r-score"></div>
+    <div class="result-msg" id="r-msg"></div>
+  </div>
+  <div class="result-grid">
+    <div class="result-card"><span class="rc-val g" id="r-correct">0</span><span class="rc-lbl">Correct</span></div>
+    <div class="result-card"><span class="rc-val r" id="r-wrong">0</span><span class="rc-lbl">Incorrect</span></div>
+    <div class="result-card"><span class="rc-val y" id="r-pct">0%</span><span class="rc-lbl">Score</span></div>
+    <div class="result-card"><span class="rc-val" id="r-time" style="color:var(--muted)">--</span><span class="rc-lbl">Time Used</span></div>
+  </div>
+  <div class="section-title" style="margin-bottom:1rem">Review All Answers</div>
+  <div class="review-list" id="review-list"></div>
+  <div class="results-actions">
+    <button class="btn-primary" onclick="restartExam()">Retake This Exam</button>
+    <button class="btn-ghost" onclick="goHome()">← Back to Exams</button>
+  </div>
+</div>
+
+<script>
+const TOPICS=['Risk Assessment','Manual Handling','Working at Height','Construction Health Risks','Plant & Equipment','Building Safety Act'];
+
+const EXAM_THEMES=[
+  {title:'Mock 1',focus:'Site Safety Foundations'},
+  {title:'Mock 2',focus:'Welfare, Accidents & BSA'},
+  {title:'Mock 3',focus:'Dust, Emergencies & Height'},
+  {title:'Mock 4',focus:'Health, Welfare & Plant'},
+  {title:'Mock 5',focus:'Legislation & Equipment'},
+  {title:'Mock 6',focus:'All Topics Final Test'},
+];
+
+// ─── QUESTION BANK ─── 50 per exam drawn from CITB GT100 + BESA syllabus ───
+const allExams=[
+
+// ══ EXAM 1 ══════════════════════════════════════════════
+[
+{t:0,q:"Who is responsible for reporting unsafe conditions on a construction site?",o:["The site manager only","The client","HSE inspectors only","Everyone on site"],a:3,e:"Under HSWA 1974, everyone on site has a duty to report unsafe conditions — not just managers."},
+{t:0,q:"During a site induction, which TWO topics should be covered?",o:["Site rules and emergency procedures","Where the cheapest car park is","Holiday dates","Information on local restaurants"],a:0,e:"Inductions must cover site rules, hazards, welfare, and emergency procedures before anyone starts work."},
+{t:0,q:"A risk assessment identifies:",o:["How to report accidents","The site working hours","The hazards and the safe way of doing the job","Where the first-aid box is kept"],a:2,e:"A risk assessment identifies significant hazards and determines the control measures needed to work safely."},
+{t:0,q:"What does the word 'hazard' mean in health and safety?",o:["The site accident rate","Anything at work that could harm you","A type of barrier or machine guard","The level of risk on a job"],a:1,e:"A hazard is anything with the potential to cause harm — a wet floor, live wire, heavy load, or chemical."},
+{t:0,q:"What is the MAIN reason for attending a site induction?",o:["To meet other new starters","Risk assessments will be handed out","Site health and safety rules and hazards will be explained","Permits to work will be handed out"],a:2,e:"Induction ensures all workers know site-specific rules, hazards, welfare, and emergency procedures before starting."},
+{t:0,q:"A near miss is an incident where:",o:["You were too late to see what happened","Someone could have been injured but was not","Someone was injured and nearly went to hospital","Someone was injured and nearly took time off work"],a:1,e:"A near miss had the potential to cause harm but did not. All near misses must be reported and investigated."},
+{t:0,q:"You can help prevent accidents on site MOST effectively by:",o:["Reporting unsafe working conditions","Becoming a first aider","Knowing where the first-aid kit is","Knowing how to get help quickly"],a:0,e:"Reporting hazards removes them before someone is hurt — the most direct form of accident prevention."},
+{t:0,q:"A permit to work allows:",o:["The emergency services onto site after an accident","Certain high-risk jobs to be carried out safely under controlled conditions","HSE inspectors to visit the site","Untrained people to work without supervision"],a:1,e:"A permit to work is a formal authorisation system for high-risk tasks such as confined space entry and hot work."},
+{t:0,q:"What is a toolbox talk?",o:["A short training session on a specific safety topic","A talk about where to buy tools","Your first training session on site","A sales talk given by a tool supplier"],a:0,e:"Toolbox talks are brief, focused safety briefings on a specific topic relevant to current work."},
+{t:0,q:"You cannot do a job as the method statement describes. What should you do?",o:["Make up your own way of doing it","Do not start work until you have spoken to your supervisor","Ask workmates how they think it should be done","Contact the HSE directly"],a:1,e:"Stop work and consult your supervisor. The method statement may need to be revised before work continues."},
+{t:1,q:"What is the MOST important reason for keeping your work area clean and tidy?",o:["To prevent slips, trips and falls","So you don't have a big clean-up at week end","So waste skips can be emptied more often","To recycle waste and help the environment"],a:0,e:"A clean, tidy site is the primary defence against slips, trips, and falls — the most common site injuries."},
+{t:1,q:"Your doctor has given you medication. Which question is MOST important before going back to work?",o:["Will it make me drowsy or unsafe to operate machinery?","Will I work more slowly?","Will my supervisor find out?","Will I oversleep?"],a:0,e:"Medication causing drowsiness or impaired judgement makes you a danger to yourself and others on a construction site."},
+{t:1,q:"You should only clean very dirty hands with:",o:["Soap and water","White spirit","Thinners","Paraffin"],a:0,e:"Always use soap and water. Solvents strip natural skin oils and can cause dermatitis over time."},
+{t:1,q:"You should not use white spirit to clean your hands because it:",o:["Strips the protective oils from your skin","Removes the top layer of skin permanently","Blocks the pores","Carries harmful bacteria"],a:0,e:"Solvents remove the skin's natural oils causing dryness, cracking, and routes for chemical penetration."},
+{t:1,q:"What is the correct technique for lifting a load from floor level?",o:["Keep legs straight and bend at the waist","Squat, keep back straight, load close to body, rise using leg muscles","Lean forward over the load and pull it up","Twist at the waist to get extra leverage"],a:1,e:"Safe lifting: feet apart for stability, squat to the load, straight back, load close to body, rise using leg muscles."},
+{t:2,q:"The work of another contractor is affecting your safety. You should stop work and:",o:["Go home","Speak to your own supervisor","Speak directly to the other contractor's supervisor","Carry on but be more careful"],a:1,e:"Report to your own supervisor who can raise it through the correct channels."},
+{t:2,q:"Equipment has been given a prohibition notice. What does this mean?",o:["Do not use it unless your supervisor is present","Do not use it until it is made safe","You can use it with extra care","Only supervisors can use it"],a:1,e:"A prohibition notice means immediate risk of serious injury. The equipment must not be used until the risk is controlled."},
+{t:2,q:"An HSE inspector issues an improvement notice. What does this mean?",o:["You are not working fast enough","Your finished work needs to improve","You are not working safely and must make improvements by a set date","All of these answers"],a:2,e:"An improvement notice identifies a specific safety breach and sets a deadline to fix it. Work can continue."},
+{t:2,q:"When should you wear a safety harness when working at height?",o:["Any time you are above ground level","Whenever working above 2 metres","When guardrails and other collective protection cannot reasonably be provided","Only when the site manager tells you to"],a:2,e:"A harness is the last resort in the hierarchy of controls for work at height, used when collective protection is not reasonably practicable."},
+{t:2,q:"How far should a leaning ladder extend above its landing point?",o:["0.5 metres","1 metre (about 5 rungs)","1.5 metres","2 metres"],a:1,e:"A leaning ladder must extend at least 1 metre (approximately 5 rungs) above the landing to provide a safe handhold."},
+{t:3,q:"Which animal is the most likely carrier of Weil's disease on a construction site?",o:["Rabbits","Squirrels","Rats","Mice"],a:2,e:"Rats are the primary carrier of Leptospira bacteria. Their urine contaminates water, mud and soil."},
+{t:3,q:"You are most likely to catch Weil's disease if you:",o:["Work near wet ground, waterways or sewers","Work near air-conditioning units","Install showers or baths","Drink from a standpipe"],a:0,e:"Leptospira bacteria thrive in wet environments contaminated with rat urine. Drainage and groundwork operatives are at highest risk."},
+{t:3,q:"Direct sunlight on bare skin can cause:",o:["Dermatitis","Rickets","Acne","Skin cancer"],a:3,e:"Prolonged UV exposure causes skin cancer. Outdoor workers including HVAC rooftop engineers must protect their skin."},
+{t:3,q:"You can get occupational dermatitis from:",o:["Hand-arm vibration","Another person who has dermatitis","Contact with strong chemicals, cement or solvents","Working in cold conditions"],a:2,e:"Occupational dermatitis is caused by repeated skin contact with irritants such as cement, cutting fluids and solvents."},
+{t:3,q:"When using power tools that generate dust you should FIRST:",o:["Stand downwind of any dust","Do the work quickly to limit exposure","Stop dust getting into the air — use extraction or water suppression","Only work in damp or wet weather"],a:2,e:"Control dust at source using extraction or water suppression — preventing dust becoming airborne is the most effective measure."},
+{t:4,q:"The Health and Safety at Work Act places legal duties on:",o:["Employers only","Operatives only","All people at work","Self-employed people only"],a:2,e:"HSWA 1974 places duties on all persons at work — employers, employees and the self-employed."},
+{t:4,q:"As a worker you do NOT have a legal duty to:",o:["Use all equipment safely and as instructed","Write your own risk assessments","Speak to your supervisor if worried about safety","Report any damaged or defective equipment"],a:1,e:"Risk assessment is the employer's duty. Workers must co-operate, use equipment correctly, and report defects."},
+{t:4,q:"Someone drinks two pints at lunch. What should they do?",o:["Drink strong coffee then return to work","Stay away from site for the rest of the day","Wait one hour then return","Eat something and return after 30 minutes"],a:1,e:"Alcohol impairs judgement, coordination and reaction time. Anyone who has been drinking must not return to site that day."},
+{t:4,q:"Why is it important to report near miss incidents?",o:["Because it is the law for all near misses","To find someone to blame","It is a CDM Regulations requirement","To learn from them and prevent future accidents"],a:3,e:"Near misses identify hazards before they cause real harm. Investigating and fixing the cause is the purpose of reporting them."},
+{t:4,q:"Why is it important to report all accidents?",o:["It might stop them happening again","Some types must be reported to the HSE","Details must be in the accident book","All of these answers"],a:3,e:"All three are correct: learning/prevention, RIDDOR compliance, and maintaining accurate legal records."},
+{t:5,q:"What is the MAIN purpose of the Building Safety Act 2022?",o:["To reduce construction costs","To improve the safety and standards of buildings, especially higher-risk residential buildings","To replace all previous fire safety legislation","To regulate planning applications"],a:1,e:"The BSA 2022 overhauled the regulatory framework for building safety, particularly for higher-risk residential buildings, following Grenfell Tower."},
+{t:5,q:"Under the BSA, what is the 'golden thread' of information?",o:["A fire safety checklist required on all sites","A continuous, accurate, up-to-date digital record of building information throughout its lifecycle","The name of the principal contractor","A new type of fire-resistant cabling"],a:1,e:"The golden thread ensures the right people always have access to accurate, up-to-date information about a building."},
+{t:5,q:"The Building Safety Act 2022 was primarily introduced in response to:",o:["Flooding of residential buildings in 2021","The Grenfell Tower fire in June 2017","Changes to European building regulations","A review of planning law"],a:1,e:"The Grenfell Tower fire (72 deaths, June 2017) exposed systemic failures in building safety management and triggered the BSA 2022."},
+{t:5,q:"As a craft operative on a higher-risk building, what is your key duty?",o:["You have no specific duties under the Act","Report safety concerns and ensure your work complies with building regulations","Ensure the building is registered with the BSR","Approve all design changes"],a:1,e:"Craft operatives must ensure their work complies with building regulations and raise safety concerns through the dutyholder framework."},
+{t:5,q:"What height defines a 'higher-risk building' under the BSA 2022?",o:["5 metres or more","11 metres or more","18 metres or more (or 7+ storeys) with at least 2 dwellings","30 metres or more"],a:2,e:"An HRB is a building 18 metres or more in height (or 7+ storeys) containing at least 2 residential units."},
+{t:0,q:"Which THREE items should be in a method statement?",o:["Materials and tools needed; people and their competency; correct order and method of work","Site directions; holiday dates; and financial details","The risks acceptable to take; site rules; and transport","Only the start and end dates of the task"],a:0,e:"A method statement must cover: what materials and equipment are needed, who is doing it and their required competencies, and the safe step-by-step sequence."},
+{t:0,q:"Which of these is NOT your legal duty as a worker?",o:["Look after your own health and safety","Look after the health and safety of others affected by your work","Write your own risk assessments","Not interfere with anything provided for health and safety"],a:2,e:"Writing risk assessments is the employer's responsibility. Workers must co-operate and take care of themselves and others."},
+{t:1,q:"Two ways to prevent a hazardous substance passing from your hands to your mouth are:",o:["Wear protective gloves while working, and wash your hands before eating","Put barrier cream on after eating and wear gloves when away from work","Wash work gloves and put them on before eating","None of these — it cannot be prevented"],a:0,e:"Gloves prevent initial skin contact; washing hands before eating removes residual contamination before it can be ingested."},
+{t:2,q:"At what minimum height must a scaffold platform have guardrails?",o:["1 metre","2 metres","3 metres","4 metres"],a:1,e:"Scaffold platforms 2 metres or more above ground level must have guardrails on all open sides under the Work at Height Regulations 2005."},
+{t:3,q:"The early signs of Weil's disease can be confused with:",o:["Dermatitis","Diabetes","Hay fever","Influenza (flu)"],a:3,e:"Weil's disease initially presents with flu-like symptoms. Workers near waterways who develop these symptoms must tell their doctor."},
+{t:4,q:"The MAIN objective of an accident investigation is:",o:["To find out who is at fault","To find out the causes in order to prevent it happening again","To find out the cost of any damage","To record injuries sustained"],a:1,e:"Accident investigation focuses on root causes. The output must be preventive actions — not disciplinary ones."},
+{t:5,q:"Who must register a higher-risk building with the Building Safety Regulator?",o:["The local council","The principal contractor","The Accountable Person","The structural engineer"],a:2,e:"The Accountable Person must register the HRB with the BSR before occupation. Failure to do so is a criminal offence."},
+{t:4,q:"Absence over 7 days from a workplace injury requires WHICH TWO actions?",o:["Record it in the accident book AND employer notifies the HSE under RIDDOR","Call the emergency services AND inform the local hospital","Notify the benefits office AND record in the company diary","Pay for first-aid equipment AND notify your trade union"],a:0,e:"Under RIDDOR, injuries causing absence of more than 7 consecutive days must be reported to the HSE and recorded in the accident book."},
+{t:3,q:"On-tool extraction must be checked to ensure:",o:["The unit is the correct type","Filters are clear and the unit is actually extracting dust","The tool is being operated correctly","All of these answers"],a:3,e:"All three checks are required: correct unit type, functioning filters, and correct tool technique."},
+{t:1,q:"When must you record an accident in the accident book?",o:["If you are injured in any way","Only if you have to be off work","Only if you have a broken bone","Only if you go to hospital"],a:0,e:"Every injury, no matter how minor, must be recorded. Minor injuries can worsen, and records protect both worker and employer."},
+{t:2,q:"Someone has fallen from height and has no feeling in their legs. You should:",o:["Roll them onto their back and straighten their legs","Roll them onto their side and bend their legs","Keep them still — do not move them until medical help arrives","Raise their legs to restore circulation"],a:2,e:"Do not move a suspected spinal injury casualty. Movement without proper stabilisation can cause permanent paralysis."},
+{t:0,q:"Who is responsible for managing health and safety on a construction site?",o:["The company safety officer","The HSE","The client","The site manager / principal contractor"],a:3,e:"Under CDM 2015, the principal contractor has overall responsibility for managing health and safety during the construction phase."},
+{t:3,q:"The early signs of occupational asthma from HVAC substances include:",o:["Skin rashes on the hands","Coughing, wheezing, or breathlessness that improves away from work","Persistent headaches","Loss of hearing in noisy environments"],a:1,e:"Occupational asthma causes breathing symptoms that typically worsen at work and improve on days away. Common triggers in HVAC include isocyanates and flux fumes."},
+{t:5,q:"What is a 'safety case report' under the Building Safety Act?",o:["An accident report filed after an incident","A document showing how building safety risks are identified and managed","A planning application for high-rise work","An insurance document"],a:1,e:"A safety case report demonstrates how the Accountable Person is identifying, managing, and reducing building safety risks in an HRB."},
+{t:4,q:"When working on or near electrical equipment, what must always be done first?",o:["Put on rubber gloves and proceed carefully","Isolate and lock off the electrical supply before starting work","Work quickly to minimise the time near the hazard","Ask a colleague to stand by in case something goes wrong"],a:1,e:"Electrical equipment must be isolated and locked off (lockout/tagout) before any work begins to prevent accidental energisation causing electrocution."},
+],
+
+// ══ EXAM 2 ══════════════════════════════════════════════
+[
+{t:0,q:"Site safety rules from your induction seem out of date as work progresses. What should you do?",o:["Do nothing — not your responsibility","Speak to your supervisor about your concerns","Ask workmates if they have new rules","Make up your own safety rules"],a:1,e:"If site conditions have changed so that original induction rules are no longer adequate, raise this with your supervisor so the risk assessment can be reviewed."},
+{t:0,q:"How would you find out about site health and safety rules when you first arrive?",o:["During the site induction","In a letter sent to your home","By reading the employer's health and safety policy","By asking other workers"],a:0,e:"Site induction is the formal process for communicating site-specific rules, hazards, welfare, and emergency procedures to new arrivals."},
+{t:0,q:"How do you know a high-risk job needs a permit to work?",o:["Other workers will tell you","The HSE will tell you","You will not be allowed to start until the permit has been issued","Permits only affect managers"],a:2,e:"Work requiring a permit cannot begin until it has been formally issued. No permit means no work."},
+{t:1,q:"Your employer must discuss health and safety with you because:",o:["It means you will never need further training","Having done so, the employer has no further responsibility","They must inform you of things that protect your health and safety","You have no personal health and safety responsibilities"],a:2,e:"Employers must ensure workers have the information, instruction, and training they need to work safely."},
+{t:1,q:"Who should attend a site induction?",o:["Cleaners only","Architects and designers only","Construction trade workers only","Everyone going onto the site"],a:3,e:"Every person entering the site — workers, managers, visitors, and delivery drivers — must complete the site induction."},
+{t:1,q:"You receive a workplace injury. When should you report it?",o:["At the end of the day before going home","Only if you had to take time off","Immediately, or as soon as possible afterwards","The next day before starting work"],a:2,e:"Injuries must be reported as soon as possible. Delay affects accuracy and, where RIDDOR applies, there are legal time limits."},
+{t:2,q:"Someone in a deep manhole has collapsed. What is the FIRST thing to do?",o:["Get someone to lower you in on a rope","Climb in and give mouth-to-mouth","Tell your supervisor","Shout and raise the alarm — a trained rescue team is needed"],a:3,e:"Never enter a confined space to rescue someone without proper equipment and training. More people die in rescue attempts than original casualties."},
+{t:2,q:"Someone is in contact with a live electrical cable. The best action is:",o:["Phone the electricity company","Dial 999 for an ambulance","Switch off the power then call for help","Pull them away from the cable"],a:2,e:"Never touch someone on a live cable — you will be electrocuted. Switch off the power first, then call emergency services."},
+{t:2,q:"What is the correct angle for a leaning ladder?",o:["45 degrees — 1 unit out for every 1 up","75 degrees — 1 unit out for every 4 up","60 degrees — 1 unit out for every 2 up","90 degrees — vertical"],a:1,e:"The 1-in-4 rule: base 1 metre out for every 4 metres of height, giving the stable 75-degree working angle."},
+{t:2,q:"What is the purpose of a toe board on a scaffold platform?",o:["Protects workers' feet from scaffold tubes","Prevents tools and materials falling off the edge","Acts as the bottom guardrail","Marks the outer edge of the platform"],a:1,e:"Toe boards (minimum 150 mm high) stop tools, materials and debris rolling off the platform edge and striking people below."},
+{t:3,q:"Your finger is cut and will not stop bleeding. What should you do?",o:["Wrap something around it and carry on working","Tell your workmates","Wash it and carry on working","Find a first aider or get medical help"],a:3,e:"A wound that won't stop bleeding requires proper first aid assessment — it may need pressure dressing, elevation, and possibly hospital treatment."},
+{t:3,q:"Someone burns their hand. The best immediate action is:",o:["Put the hand under cold running water for at least 10 minutes","Tell them to carry on working to keep the hand moving","Rub barrier cream or Vaseline into the burn","Wrap a handkerchief around the burn"],a:0,e:"Cold running water for a minimum of 10-20 minutes reduces tissue damage and pain. Never apply any substance to a fresh burn."},
+{t:3,q:"What is the FIRST thing to do if you find an injured person?",o:["Tell your supervisor","Check that YOU are not in any danger before approaching","Move them to a safe place","Ask them what happened"],a:1,e:"Scene safety first. Approaching without checking for hazards can create a second casualty. Check for dangers before you act."},
+{t:3,q:"Someone falls and is knocked unconscious. What should you do FIRST?",o:["Roll them onto their back","Send for medical help immediately","Slap their face to rouse them","Give mouth-to-mouth resuscitation"],a:1,e:"Get emergency help without delay. Do not move the casualty unnecessarily (spinal injury risk) and do not give treatment you are not trained for."},
+{t:4,q:"An accident book entry must be:",o:["Sent to the insurance company at the end of the job","Kept where anyone can read it at any time","Treated as confidential under data protection law and kept for at least 3 years","Destroyed at the end of the job"],a:2,e:"Accident records are personal data and must be kept confidential for at least 3 years from the date of the last entry."},
+{t:4,q:"Accidents causing any injury should always be recorded in the:",o:["Main contractor's diary","Accident report book","Site engineer's day book","Subcontractor's diary"],a:1,e:"All injuries, however minor, must be recorded in the site accident/incident report book."},
+{t:4,q:"Why should you report an accident?",o:["It helps find out who caused it","It is a legal requirement","So the site manager can apportion blame","So your company can be held responsible"],a:1,e:"Reporting injuries is a legal requirement. Under RIDDOR, specified injuries and diseases must be reported to the HSE."},
+{t:4,q:"Who must you report a serious accident to first?",o:["Site security","The police","Your employer or supervisor","The ambulance service"],a:2,e:"Your employer or supervisor must be told immediately so they can ensure the casualty gets help and fulfil their legal obligations."},
+{t:4,q:"A dangerous occurrence happened on site but no one was injured. Who must you report it to?",o:["Your site supervisor or site manager","The client","The rest of the workforce","The first aider"],a:0,e:"Dangerous occurrences must be reported to the supervisor/site manager immediately, and to the HSE where required under RIDDOR."},
+{t:5,q:"Under the BSA, who is the 'Principal Accountable Person' for an HRB?",o:["The architect who designed it","The person responsible for managing the common parts","The senior fire officer for the area","The original developer"],a:1,e:"The Principal Accountable Person is the person or organisation with most obligations for the common parts — typically the freeholder or resident management company."},
+{t:0,q:"The MAIN objective of an accident investigation is:",o:["To find out who is at fault","To find out the causes in order to prevent it happening again","To find out the cost of damage","To record the injuries sustained"],a:1,e:"Investigation focuses on root causes and systemic failures, not blame. The output is preventive action."},
+{t:1,q:"You have witnessed a serious accident. An HSE inspector will interview you. Should you:",o:["Ask your supervisor what to say","Tell the inspector nothing","Co-operate fully and tell the inspector exactly what you saw","Tell the inspector what your workmates told you"],a:2,e:"You are legally required to co-operate with HSE inspectors. Obstruction of an inspector is a criminal offence."},
+{t:2,q:"Someone gets grit in their eye. The best action is:",o:["Hold the eye open and wipe with clean tissue","Ask them to rub the eye until it waters","Tell them to blink a couple of times","Hold the eye open and flush with sterilised water or eyewash"],a:3,e:"Flushing with sterile water removes particles safely. Rubbing or wiping the eye can scratch the cornea or drive particles deeper."},
+{t:3,q:"Your doctor says you have hand-arm vibration syndrome caused by work. What should you do?",o:["Tell no one — it is embarrassing","Inform your site supervisor or employer","Only tell your workmates","Tell no one — this is not reportable"],a:1,e:"HAVS is a RIDDOR-reportable occupational disease. Your employer must be told so they can review exposure and report to the HSE."},
+{t:3,q:"Someone gets a large, deep splinter in their hand. What should you do?",o:["Use something sharp to dig it out","Make sure they get proper first aid","Tell them to ignore it","Squeeze it out with your thumbs"],a:1,e:"Deep splinters require proper first aid. Untrained attempts to remove them can drive them deeper, cause infection, or damage underlying tissues."},
+{t:4,q:"What is the legal minimum washing facility on a construction site?",o:["Nothing — there is no legal duty","A bowl, kettle and towel","A cold water standpipe and paper towels","Hot and cold running water (or warm water), soap and means to dry hands"],a:3,e:"CDM 2015 requires suitable washing facilities including running water, soap, and drying facilities."},
+{t:4,q:"Toilets on your site are always dirty or won't flush. What should you do?",o:["Try not to use them","Tell the person in charge of the site","Try to fix the fault yourself","Use toilets in a nearby café"],a:1,e:"Inadequate sanitary facilities must be reported to the site manager. Employers have a legal duty to provide clean toilet facilities."},
+{t:4,q:"What rest area must your employer provide on a construction site?",o:["Any covered area","A covered area with seating","A covered area with tables, seating, and something to heat food and water","Nothing — there is no requirement"],a:2,e:"CDM 2015 requires rest facilities including a covered area, seating, tables, and means to heat food and water."},
+{t:5,q:"What is a 'safety case report' under the Building Safety Act?",o:["An incident report filed after an accident","A document showing how building safety risks are identified and managed","A planning application for high-rise work","An insurance document required by the BSR"],a:1,e:"The safety case report shows how the Accountable Person is identifying, managing, and reducing building safety risks in an HRB."},
+{t:5,q:"The Building Safety Act's two primary building safety risks are:",o:["Flooding and structural overload","Spread of fire and structural failure","Gas explosions and toxic contamination","Electrical faults and water ingress"],a:1,e:"The BSA focuses specifically on risks from the spread of fire and structural failure — the two key risks highlighted by the Grenfell Tower inquiry."},
+{t:2,q:"You have been asked to do work that will create significant dust. What should you do?",o:["Refuse — all dust is too dangerous","Use equipment that eliminates or reduces dust, with RPE as a last resort","Start work — no controls needed","Work for short periods only"],a:1,e:"Apply the hierarchy: eliminate, reduce at source (extraction/water), then use RPE as a last resort."},
+{t:1,q:"Someone collapses with severe stomach pain and there is no first aider. What do you do FIRST?",o:["Get them to sit down","Get someone to call the emergency services","Lay them in the recovery position","Give them painkillers"],a:1,e:"Call emergency services immediately for any collapse or serious sudden illness."},
+{t:3,q:"If someone gets a nail embedded in their foot, you must NOT pull it out because:",o:["You will introduce bacteria","The nail is plugging the wound and reducing blood loss","It will prove they weren't wearing safety boots","It will keep their boot on"],a:1,e:"Removing a penetrating object can cause sudden severe haemorrhage. The object controls bleeding by sealing the wound. Support it and call emergency services."},
+{t:0,q:"Who is responsible for managing health and safety on a construction site?",o:["The company safety officer","The HSE","The client","The site manager or principal contractor"],a:3,e:"Under CDM 2015, the principal contractor has overall responsibility for managing health and safety during the construction phase."},
+{t:5,q:"The BSR was created under the Building Safety Act. Which body hosts it?",o:["The Fire and Rescue Service","The Health and Safety Executive (HSE)","The Ministry of Housing","Local Authority Building Control"],a:1,e:"The Building Safety Regulator operates as a specialist division within the Health and Safety Executive."},
+{t:3,q:"Using on-tool extraction to control dust — what is important to check?",o:["The extraction unit is the correct type","Filters are clear and the unit is actually extracting dust","You are using the power tool correctly","All of these answers"],a:3,e:"All three checks are required: correct unit type, functioning filters, and correct tool technique to present dust to the capture point."},
+{t:4,q:"What is a hot work permit used for?",o:["Authorisation to work outdoors in summer","A formal authorisation before welding, cutting or grinding in areas where fire or explosion risk exists","A health and safety qualification","An HMRC document for overseas workers"],a:1,e:"A hot work permit is required for any ignition-source activity in areas with fire or explosion risk. It specifies precautions to be taken."},
+{t:2,q:"What must be in place before anyone uses a scaffold for the first time?",o:["A supervisor watching from the ground","Inspection by a competent person, with a record confirming it is safe","A hard hat and hi-vis vest only","Permission from the client"],a:1,e:"Scaffolding must be inspected by a competent person before first use, with the result recorded in writing."},
+{t:1,q:"When must an accident be recorded in the accident book?",o:["If you are injured in any way","Only if you have to be off work","Only if you have a broken bone","Only if you go to hospital"],a:0,e:"Every accident causing any personal injury must be recorded, regardless of severity."},
+{t:4,q:"Why is it important to report near miss incidents?",o:["Because it is the law for all near misses","To find someone to blame","It is a CDM requirement","To learn from them and prevent future accidents"],a:3,e:"Near misses are warnings that identify hazards before they cause real harm."},
+{t:5,q:"The 'gateway' regime under the Building Safety Act means:",o:["Security checkpoints at site entrances","Regulatory checkpoints that must be passed before key stages of an HRB project can proceed","An approval process for scaffold erection","A daily briefing between contractor and client"],a:1,e:"The three-gateway process requires BSR approval before construction starts (Gateway 2) and before occupation (Gateway 3)."},
+{t:0,q:"A scaffold collapses and you saw it happen. When asked about the accident, you should say:",o:["Nothing — you are not a scaffold expert","As little as possible","Exactly what you saw","Who you think is to blame"],a:2,e:"Always give an accurate, honest account of what you witnessed. This is legally required and essential for accident investigation."},
+{t:3,q:"If there is an emergency while you are on site you should FIRST:",o:["Leave the site and go home","Phone home","Follow the site emergency procedure","Phone the HSE"],a:2,e:"Site emergency procedures are designed for the specific hazards on that site. Follow them — do not improvise."},
+{t:0,q:"You find that you cannot do a job as the method statement describes. What should you do?",o:["Make up your own way of doing the job","Do not start work until you have spoken to your supervisor","Ask workmates how they think it should be done","Contact the HSE directly"],a:1,e:"Stop work and consult your supervisor. The method statement may need to be revised before work can safely continue."},
+{t:2,q:"What does SWL mean on a piece of lifting equipment?",o:["Safe Working Length","Safe Working Load — the maximum load it is rated to lift safely","Structural Working Limit","Swing Working Leverage"],a:1,e:"SWL is the maximum mass a piece of lifting equipment is certified to lift safely under defined conditions. Never exceed the SWL."},
+{t:4,q:"What is the purpose of a guard on a power tool such as an angle grinder?",o:["To make the tool look more professional","To prevent contact between the operator and the dangerous moving parts","To hold the tool together structurally","To meet manufacturer's warranty conditions"],a:1,e:"Guards prevent accidental contact with cutting blades, abrasive wheels, and other dangerous moving parts. Removing guards is illegal under PUWER."},
+{t:3,q:"Which of the following is a symptom of occupational asthma caused by HVAC work substances?",o:["Skin rashes on the hands only","Coughing, wheezing, or breathlessness that improves on days away from work","Persistent headaches unrelated to work","Loss of hearing over time"],a:1,e:"Occupational asthma symptoms typically worsen at work and improve when away. Common HVAC triggers include isocyanate-based sealants and flux fumes."},
+{t:4,q:"Hand-arm vibration syndrome (HAVS) is caused by regular use of:",o:["Any hand tool used repeatedly","Vibrating tools such as grinders, drills, compactors and chainsaws","Only pneumatic tools","Only tools used outdoors"],a:1,e:"HAVS results from regular exposure to vibration from hand-held power tools. It causes permanent damage to nerves and circulation in the hands and fingers."},
+{t:5,q:"What does the Building Safety Act 2022 require regarding 'competence' for those working on higher-risk buildings?",o:["Only managers need to demonstrate competence on HRB projects","Craft operatives must have skills, knowledge, experience and behaviours appropriate to their role","A new construction licence is required for all site workers","Only fire safety trades need additional training"],a:1,e:"The BSA extends competence requirements to everyone working on higher-risk buildings — craft operatives must demonstrate appropriate knowledge, skills, and behaviours."},
+{t:0,q:"What is the main difference between an HSE improvement notice and a prohibition notice?",o:["An improvement notice is more serious than a prohibition notice","An improvement notice requires improvements by a set date but work can continue; a prohibition notice stops work immediately","Both require work to stop immediately","An improvement notice only applies to office environments"],a:1,e:"An improvement notice gives a deadline to fix a problem while work continues. A prohibition notice stops the activity immediately due to serious risk of injury."},
+],
+
+// ══ EXAM 3 ══════════════════════════════════════════════
+[
+{t:0,q:"It is your first day on site. There is nowhere to wash your hands. What should you do?",o:["Wait until you get home","Go to a nearby café","Speak to your supervisor about the problem","Bring your own water bottle tomorrow"],a:2,e:"Inadequate welfare facilities must be reported to the supervisor. Employers have a legal duty to provide adequate washing facilities."},
+{t:0,q:"Why is it important to report near miss incidents?",o:["Because it is the law for all near misses","To find someone to blame","It is a CDM requirement for all incidents","To learn from them and prevent accidents"],a:3,e:"Near misses are free lessons. Reporting them identifies hazards and allows them to be corrected before someone is seriously hurt."},
+{t:0,q:"Which of the following does NOT need to be recorded in the accident book?",o:["Your national insurance number","The date and time of the accident","Details of your injury","Your home address"],a:0,e:"The accident book does not require your NI number. It records date, time, location, nature of injury, and who was involved."},
+{t:0,q:"Which TWO items are NOT recorded in an accident book entry?",o:["National insurance number and telephone number","Date/time of accident and injuries sustained","Witness names and description of what happened","Location and treatment given"],a:0,e:"NI numbers and telephone numbers are not required. The key information is: date/time, location, what happened, nature of injury, and name of injured person."},
+{t:0,q:"Who should record a workplace injury in the accident book?",o:["The site manager — no one else","The injured person, or someone acting for them","The first aider — no one else","An HSE inspector"],a:1,e:"The injured person should complete the entry. If unable to (due to injury), a colleague or supervisor may complete it on their behalf."},
+{t:1,q:"You can catch tetanus from contaminated land. How does it enter your body?",o:["Through your nose when you breathe","Through an open cut or wound in your skin","Through your mouth when you eat","It only infects animals"],a:1,e:"Tetanus bacteria live in soil and enter through cuts and puncture wounds. Construction workers should ensure their tetanus vaccination is up to date."},
+{t:1,q:"Exposure to engine oil and other mineral oils can cause:",o:["Skin conditions including dermatitis and oil acne","Heart disease","Chest infections","Hand-arm vibration syndrome"],a:0,e:"Regular skin contact with mineral oils causes folliculitis, dermatitis, and oil acne with prolonged exposure."},
+{t:1,q:"Users of illegal drugs on a construction site are dangerous because:",o:["They work better and faster","They are a danger to everyone on site","They take fewer days off","Drug-taking only affects the user"],a:1,e:"Drugs impair judgement, reaction time, and co-ordination. On a construction site this puts everyone at serious risk."},
+{t:1,q:"You should not rely on barrier cream alone to protect skin because:",o:["It costs too much","Many harmful substances penetrate straight through it","It is difficult to wash off","It can irritate the skin"],a:1,e:"Barrier cream provides limited protection. It does not stop penetration by many solvents and chemicals. Gloves must also be used."},
+{t:1,q:"Barrier cream — when should you apply it?",o:["Before you start work","When you finish work","As part of first-aid treatment","When you can't find your gloves"],a:0,e:"Barrier cream must be applied to clean, dry skin before work starts. It creates a protective layer before exposure occurs."},
+{t:2,q:"When wet-cutting to control dust, the water flow must be:",o:["As great as possible","Correctly adjusted to keep the cutting point wet","Provided by someone standing beside you with a bottle","Applied to the surface before cutting only"],a:1,e:"The water supply must be correctly adjusted — too little won't suppress dust, too much can obscure the cut and create slip hazards."},
+{t:2,q:"You have finished cutting and need to sweep up dust. What should you do?",o:["Dampen the area down first","Ensure good ventilation","Put RPE back on before sweeping","All of these answers"],a:3,e:"All three actions are correct: dampening stops re-suspension, ventilation dilutes airborne dust, and RPE protects against residual airborne dust."},
+{t:2,q:"When using on-tool extraction to control dust, what is important to check?",o:["The extraction unit is the correct type","Filters are clear and the unit is extracting dust","You are using the power tool correctly","All of these answers"],a:3,e:"All three checks are essential: correct unit type, functioning clear filters, and correct tool technique."},
+{t:2,q:"You are using water for dust control and run out. Should you:",o:["Carry on as you have nearly finished","Stop and refill with water before continuing","Ask everyone to clear the area and carry on","Carry on but get someone to sweep up afterwards"],a:1,e:"Stop work immediately. Dry cutting without controls creates harmful dust levels within seconds. Refill and restart only when water control is restored."},
+{t:3,q:"Which TWO things will help you find out about site emergency procedures?",o:["Reading the site notice boards and attending the site induction","Guidance from the HSE website and the local Job Centre","The telephone directory and the main contractor's website","Your trade union representative and the client's project manager"],a:0,e:"Emergency procedures are communicated through site inductions and displayed on site notice boards."},
+{t:3,q:"In an emergency on a construction site, you should:",o:["Leave the site and go home","Phone home to let your family know","Follow the site emergency procedure","Phone the HSE"],a:2,e:"Site emergency procedures are specifically designed for the hazards on that site. Follow them — do not improvise."},
+{t:3,q:"In an emergency, an 'assembly point' is:",o:["The site manager's office","The place where the accident happened","The site welfare facilities","The specified place to gather safely after an evacuation"],a:3,e:"The assembly point is a pre-designated safe area where everyone gathers after evacuation so a roll call can be taken."},
+{t:3,q:"A first-aid box should NOT contain:",o:["Bandages","Plasters","Safety pins","Over-the-counter medicines such as aspirin"],a:3,e:"First-aid boxes must not contain medicines. Only authorised medical professionals can administer medications."},
+{t:3,q:"Does your employer have to provide a first-aid box?",o:["Yes — every site must have one","Only if more than 50 people work on site","Only if more than 25 people work on site","No — there is no legal duty"],a:0,e:"The Health and Safety (First Aid) Regulations 1981 require all employers to provide adequate first-aid equipment."},
+{t:3,q:"When would you expect eyewash bottles to be provided on site?",o:["Only on demolition sites removing asbestos","Only on refurbishment sites","On all sites where people could get substances in their eyes","Only where showers are provided"],a:2,e:"Eyewash should be available wherever there is a risk of eye contamination — from dust, chemicals, sparks, or debris."},
+{t:4,q:"What is the FIRST thing to do if you find an injured colleague?",o:["Tell your supervisor","Ensure you are not in danger yourself before approaching","Move them to a safe place","Ask them what happened"],a:1,e:"Always assess your own safety first. If you approach without checking for hazards (electricity, fumes, unstable structure), you may become a second casualty."},
+{t:4,q:"If you want to become a first aider, what should you do?",o:["Watch a first aider treating patients then try it yourself","Ask if you can attend a recognised first-aid training course","Buy a first-aid book and start treating people","Speak to your GP about it"],a:1,e:"First aiders must complete a recognised training course. Untrained first aid can cause more harm than good."},
+{t:4,q:"What is the one thing a first aider CANNOT do?",o:["Give mouth-to-mouth resuscitation","Apply a dressing to stop bleeding","Give medicines without proper authorisation","Treat an unconscious casualty"],a:2,e:"First aiders are not authorised to administer medicines. Only authorised medical professionals can prescribe or give medication."},
+{t:4,q:"If you think someone has broken their leg, what should you do?",o:["Lie them on their side","Use your belt to strap their legs together","Call for a first aider or emergency help and keep them still","Lie them on their back and raise the leg"],a:2,e:"Suspected fractures require proper first aid. Do not move the limb. Get a trained first aider or emergency services."},
+{t:4,q:"Someone burns their hand. What should you do?",o:["Put the hand under cold running water for at least 10 minutes","Tell them to keep the hand moving","Apply Vaseline or barrier cream","Wrap a handkerchief tightly around it"],a:0,e:"Cool the burn with cold running water for a minimum of 10 minutes (ideally 20 minutes). Never apply any cream, oil, or other substance."},
+{t:5,q:"What does the Building Safety Regulator (BSR) do?",o:["Approves all planning applications for high-rise buildings","Oversees building control for HRBs, building standards nationally, and industry competence","Provides fire and rescue services for high-rise buildings","Sets building insurance requirements"],a:1,e:"The BSR, within the HSE, oversees building control for HRBs, national building standards, and the construction industry competence framework."},
+{t:5,q:"The BSA requires the Accountable Person to give residents:",o:["Rights to attend monthly safety meetings","Access to key building safety information and a mechanism to raise concerns","Rights to veto any maintenance work","None — residents have no new rights under the Act"],a:1,e:"The BSA gives residents of HRBs the right to receive key safety information and to raise concerns, which the Accountable Person must respond to."},
+{t:5,q:"The 'gateway' regime under the Building Safety Act means:",o:["Security checkpoints at site entrances","Regulatory checkpoints that must be passed before key stages of an HRB project can proceed","An approval process for scaffold erection","A daily briefing between contractor and client"],a:1,e:"The three-gateway process requires BSR approval before construction starts (Gateway 2) and before occupation (Gateway 3)."},
+{t:5,q:"What duty does the BSA place on a designer working on an HRB?",o:["No duties beyond CDM 2015","Ensure their design complies with building regulations and co-operate with the principal designer","Carry out only their own structural calculations","Only provide planning drawings"],a:1,e:"Designers on HRB projects must ensure their designs comply with building regulations, co-operate with the principal designer, and provide necessary building control information."},
+{t:0,q:"What is a prohibition notice issued by the HSE?",o:["A notice confirming health and safety compliance","A notice requiring improvements by a set date, work can continue","An instruction to stop a specific activity immediately due to risk of serious injury","A financial penalty for a health and safety breach"],a:2,e:"A prohibition notice requires the immediate cessation of an activity presenting a risk of serious personal injury. Work cannot continue until the risk is controlled."},
+{t:1,q:"Someone drinks two pints at lunch. What should happen?",o:["Strong coffee and back to work","Stay away from site for the rest of the day","Wait one hour and return","Eat something and return after 30 minutes"],a:1,e:"Alcohol impairs judgement, balance, and reaction time. A person who has consumed alcohol must not return to a construction or HVAC site that working day."},
+{t:2,q:"What must be checked on a scaffold before it is used?",o:["The hire company's details","That it has been inspected by a competent person and is tagged as safe to use","That it looks sturdy","That the scaffolding company has insurance"],a:1,e:"Scaffolding must be inspected by a competent person before first use, with a written record confirming it is safe."},
+{t:0,q:"What is the MAIN reason for reporting a near miss on site?",o:["It is the law for all near misses","To find someone to blame for the incident","It is a CDM requirement for all incidents","So the underlying hazard can be investigated and fixed before a real accident occurs"],a:3,e:"Reporting near misses allows investigation of the root cause so it can be fixed before someone is actually hurt. Near misses are often called 'free lessons'."},
+{t:3,q:"The early signs of Weil's disease can be confused with:",o:["Dermatitis","Diabetes","Hay fever","Influenza (flu)"],a:3,e:"Weil's disease initially presents like flu. Workers near water who develop these symptoms must tell their doctor about their occupation."},
+{t:4,q:"What is the main objective of an accident investigation?",o:["Find out who was to blame","Identify causes to prevent recurrence","Calculate the cost of any damage","Record injuries for insurance"],a:1,e:"Accident investigation focuses on root causes and systemic failures, not blame. The output is preventive actions."},
+{t:5,q:"What is the Building Safety Act's requirement for 'competence' of those working on HRBs?",o:["Only managers need to demonstrate competence","Craft operatives must have skills, knowledge, experience and behaviours appropriate to their role","A new licence is required for all site workers","Only fire safety trades need additional training"],a:1,e:"The BSA extends competence requirements to everyone working on higher-risk buildings, including craft operatives."},
+{t:2,q:"What should you do BEFORE climbing a ladder?",o:["Ensure a colleague is at the bottom at all times","Check it is in good condition, footed correctly, and secured at the top where practicable","Ensure you are wearing a full body harness","Ensure there is soft ground below"],a:1,e:"Pre-use checks: inspect stiles and rungs for damage, feet on firm level ground, and tie at the top or have someone foot it."},
+{t:1,q:"Two ways to stop a hazardous substance reaching your mouth from your hands:",o:["Wear protective gloves while working AND wash hands before eating","Put barrier cream on after eating and wear gloves when away from work","Wash work gloves before eating","None of these can prevent absorption"],a:0,e:"Gloves prevent initial skin contact; thorough hand-washing before eating removes any residual contamination."},
+{t:3,q:"When using power tools that generate dust, you should FIRST:",o:["Stand downwind of any dust","Do the work quickly to limit exposure time","Stop dust getting into the air — use extraction or water suppression","Only do dusty work in damp weather"],a:2,e:"Control dust at source using extraction or water suppression — the most effective approach, far better than trying to protect workers once dust is airborne."},
+{t:4,q:"Why is it important to report all accidents?",o:["It might stop them happening again","Some types must be reported to the HSE","Details must be in the accident book","All of these answers"],a:3,e:"All three are correct: learning and prevention, RIDDOR compliance, and maintaining accurate legal records."},
+{t:0,q:"The Health and Safety at Work Act places legal duties on:",o:["Employers only","Operatives only","All people at work","Self-employed people only"],a:2,e:"HSWA 1974 places duties on all persons at work — employers, employees and self-employed."},
+{t:1,q:"What is the correct angle for a leaning ladder?",o:["45 degrees — 1 out for every 1 up","75 degrees — 1 out for every 4 up","60 degrees — 1 out for every 2 up","90 degrees — vertical against the wall"],a:1,e:"The 1-in-4 rule: base 1 metre out for every 4 metres of height, giving the stable 75-degree working angle."},
+{t:2,q:"How often must scaffolding be inspected?",o:["Only when first erected","Once a month","Before first use, after assembly, after any event affecting stability, and at least every 7 days","Once every 3 months"],a:2,e:"Work at Height Regulations 2005 require scaffold inspection before first use, after assembly, after any stability-affecting event, and at intervals not exceeding 7 days."},
+{t:3,q:"Weil's disease (leptospirosis) is most likely caught by workers who:",o:["Work near wet ground, waterways or sewers","Work near air-conditioning plant","Install showers or baths","Drink water from a standpipe"],a:0,e:"Leptospira bacteria thrive in wet environments contaminated with rat urine. Groundworkers and drainage engineers face the highest risk."},
+{t:4,q:"When using power tools you should FIRST try to:",o:["Stand downwind of any dust generated","Do the work quickly to limit exposure","Stop dust getting into the air — use extraction or water suppression","Only do the work during damp weather"],a:2,e:"Control dust at source using extraction or water suppression — the most effective measure. Preventing dust entering the air is far better than trying to protect workers once it is airborne."},
+{t:5,q:"Under the Building Safety Act, who registers a higher-risk building with the BSR?",o:["The local council","The principal contractor","The Accountable Person","The structural engineer"],a:2,e:"The Accountable Person must register the HRB with the BSR before occupation. Failure to register is a criminal offence."},
+{t:1,q:"Which of the following is NOT your legal duty as a worker?",o:["Look after your own health and safety","Look after the health and safety of others affected by your work","Write your own risk assessments","Not interfere with anything provided for health and safety"],a:2,e:"Risk assessment is the employer's responsibility. Workers must co-operate, take care of themselves and others, and not misuse safety equipment."},
+{t:2,q:"What is the purpose of a safety harness when working at height?",o:["To identify workers who are working at height","To prevent workers accessing restricted areas","To arrest a fall and limit the distance fallen if the worker slips","To support extra tools and equipment"],a:2,e:"A safety harness connected to a fall arrest lanyard limits the distance fallen, reducing the risk of serious injury. It is a last resort — used only when collective protection is not practicable."},
+{t:3,q:"What should you do if you suspect materials on site contain asbestos?",o:["Wet the surface down and proceed carefully","Continue working but wear a dust mask","Stop work immediately and report it to your supervisor","Remove it yourself if you can do so quickly"],a:2,e:"If asbestos is suspected, work must stop immediately. The finding must be reported to the supervisor. Only licensed contractors can remove notifiable asbestos."},
+{t:4,q:"What is the purpose of a permit to work system?",o:["To record which tools have been signed out","To ensure high-risk tasks are only carried out under a controlled, authorised system","To pay workers for overtime on hazardous tasks","To record working hours for payroll purposes"],a:1,e:"A permit to work is a formal written system ensuring that hazardous work is properly planned, authorised, and carried out safely with appropriate controls in place."},
+],
+
+// ══ EXAM 4 ══════════════════════════════════════════════
+[
+{t:0,q:"As a worker you do NOT have a legal duty to:",o:["Use all equipment safely and as instructed","Write your own risk assessments","Speak to your supervisor if worried about safety","Report any damaged or defective equipment"],a:1,e:"Risk assessment is the employer's duty. Workers must co-operate, use equipment correctly, and report defects."},
+{t:0,q:"When must an accident be recorded in the site accident book?",o:["Only when an accident causes injury to a worker at work","Only when a person is off work for more than three days","Only when there is damage to plant or equipment","Only when someone breaks a major bone"],a:0,e:"Every accident causing any personal injury must be recorded — regardless of severity."},
+{t:0,q:"An entry must be made in the accident book when:",o:["An accident causes personal injury to any worker","The person has been off sick for three days","The severity may result in a compensation claim","Management decides it is appropriate"],a:0,e:"There is no threshold. Every accident resulting in any personal injury requires an accident book entry."},
+{t:0,q:"While on site you get a small cut on a finger. What should you do?",o:["Report it at the end of the day","Wash it and continue if it seems minor","Clean it up and tell your supervisor later","Report it and get first aid if necessary"],a:3,e:"Even minor cuts should be reported and assessed by a first aider. Cuts on site can become infected, and the injury must be recorded."},
+{t:1,q:"You should only clean very dirty hands with soap and water because:",o:["Soap and water are cheap and available","Solvents damage the skin's natural protective oils and can cause dermatitis","Water is better at removing dirt","Solvents are fire hazards"],a:1,e:"Solvents strip skin oils causing dryness and cracking — routes for chemical and biological contamination."},
+{t:1,q:"Direct sunlight on bare skin during outdoor HVAC work can cause:",o:["Dermatitis","Rickets","Acne","Skin cancer"],a:3,e:"Prolonged UV exposure causes skin cancer. Outdoor workers must use sunscreen, cover up, and avoid peak sun hours."},
+{t:1,q:"You can get occupational dermatitis in HVAC work from:",o:["Hand-arm vibration from power tools","Another person who has dermatitis","Cutting fluids, flux, jointing compounds or cleaning solvents","Working in cold conditions"],a:2,e:"Many HVAC materials — flux, jointing compounds, cleaning solvents — can cause irritant or allergic contact dermatitis."},
+{t:1,q:"If you use skin barrier cream, when should you apply it?",o:["Before starting work","When finishing work","As part of first-aid treatment","When you cannot find your gloves"],a:0,e:"Barrier cream must be on clean dry skin before work begins, creating a protective layer before exposure occurs."},
+{t:2,q:"If you find an injured person collapsed, what is the FIRST thing to do?",o:["Tell your supervisor","Check you are not in danger yourself before approaching","Move them to a safe place","Ask them what happened"],a:1,e:"Self-preservation first. Assess the scene for hazards before approaching. Creating a second casualty makes the situation worse."},
+{t:2,q:"Someone has a nail in their foot. As a non-first-aider, you must NOT pull it out because:",o:["You might introduce bacteria","The nail is plugging the wound and reducing blood loss","It will prove the casualty wasn't wearing safety boots","It is keeping their boot on"],a:1,e:"Removing a penetrating object can cause sudden severe haemorrhage. The object controls bleeding by sealing the wound."},
+{t:2,q:"Someone collapses with stomach pain and there is no first aider. What do you do FIRST?",o:["Get them to sit down comfortably","Get someone to call the emergency services","Lay them in the recovery position","Give them painkillers"],a:1,e:"In any medical emergency without a first aider, call 999 immediately. Getting professional help is always the first priority."},
+{t:2,q:"Someone falls and is knocked unconscious. What should you do FIRST?",o:["Roll them onto their back","Send for urgent medical help","Slap their face to rouse them","Give mouth-to-mouth resuscitation"],a:1,e:"Get emergency help without delay. Unconsciousness requires professional medical assessment."},
+{t:3,q:"To help keep rats away, everyone on site should:",o:["Buy rat traps and place them around the site","Ask the local authority to put down poison","Throw food scraps over the fence","Only put food and drink rubbish in the bins provided"],a:3,e:"Reducing food waste and using proper bins removes the food source that attracts rats, thereby reducing Weil's disease risk."},
+{t:3,q:"You are more likely to catch Weil's disease if you:",o:["Work near wet ground, waterways or sewers","Work near air-conditioning plant","Install showers or baths","Drink from a site standpipe"],a:0,e:"Leptospira thrive in wet environments contaminated with rat urine. Groundworkers and drainage engineers face the highest risk."},
+{t:3,q:"The early signs of Weil's disease can be confused with:",o:["Dermatitis","Diabetes","Hay fever","Influenza (flu)"],a:3,e:"Weil's disease initially presents like flu. Workers near water who develop these symptoms must tell their doctor about their occupation."},
+{t:3,q:"Exposure to engine oil and other mineral oils can cause:",o:["Skin conditions including dermatitis and oil acne","Heart disease","Respiratory disease","Vibration white finger"],a:0,e:"Regular skin contact with mineral oils causes folliculitis, oil acne, and dermatitis."},
+{t:4,q:"When should you wear ear protection on an HVAC or construction site?",o:["Only when noise is painful","Whenever asked by the site manager","When noise levels reach or exceed 85 dB(A)","All the time everywhere on site"],a:2,e:"The Control of Noise at Work Regulations 2005 require hearing protection use to be enforced at the upper action value of 85 dB(A)."},
+{t:4,q:"Hand-arm vibration syndrome (HAVS) is caused by:",o:["Working in cold conditions without gloves","Regular use of vibrating tools such as grinders, drills and compactors","Manual handling of heavy loads","Working at height without a harness"],a:1,e:"HAVS is caused by regular exposure to vibration transmitted from hand-held power tools. It causes permanent damage."},
+{t:4,q:"When using power tools you should FIRST try to:",o:["Stand downwind of any dust","Work quickly to limit exposure time","Stop dust getting into the air through extraction or water suppression","Only do the work in damp weather"],a:2,e:"Control dust at source. Preventing dust entering the air is far more effective than protecting workers once it is airborne."},
+{t:4,q:"You have been asked to do work that will create significant dust. What should you do?",o:["Refuse — all dust is too dangerous","Use tools and methods that eliminate or reduce dust, with RPE as a last resort","Start work — no controls needed","Work for short periods only"],a:1,e:"Apply the hierarchy of controls: eliminate, reduce at source (LEV/water), then RPE as a last resort."},
+{t:5,q:"What is the Building Safety Regulator (BSR)?",o:["A new government department replacing the HSE","A specialist regulator that sits within the HSE and oversees building safety","The local fire service's building inspection team","A private certification body for building contractors"],a:1,e:"The BSR operates as a specialist division of the HSE and is the building control authority for higher-risk buildings."},
+{t:5,q:"What obligation does the BSA place on the principal contractor for HRBs?",o:["No new obligations beyond CDM 2015","Providing mandatory inductions for all visitors","Notifying the BSR at key stages, following the gateway regime, and maintaining compliance records","Employing a full-time building safety manager on site"],a:2,e:"For HRB projects, the principal contractor must follow the gateway regime, notify the BSR at prescribed milestones, and maintain compliance documentation."},
+{t:5,q:"Who is the 'client' under the Building Safety Act and what is their key duty?",o:["The construction company","The person commissioning the project — they must appoint competent dutyholders and ensure gateways are passed before occupation","The local council responsible for planning","The architect who designed the building"],a:1,e:"The client must appoint competent dutyholders, ensure the gateway process is followed, and not allow occupation until the BSR issues a completion certificate."},
+{t:5,q:"BSA competence requirements for craft operatives working on HRBs mean they must:",o:["Only managers need to demonstrate competence on HRB projects","Have skills, knowledge, experience and behaviours appropriate to their role","Obtain a new construction licence","Only fire safety trades need extra training"],a:1,e:"The BSA extends competence requirements to all working on HRBs, including craft operatives."},
+{t:0,q:"The MAIN reason for keeping a construction work area clean and tidy is:",o:["To prevent slips, trips and falls","So you don't have a big clean-up at the end of the week","So waste skips can be emptied more often","To recycle waste and help the environment"],a:0,e:"A clean, tidy site is the primary defence against slips, trips, and falls — the most common cause of workplace injuries."},
+{t:1,q:"The legal minimum washing facility on a construction site is:",o:["No legal requirement","A bowl, kettle and towel","A cold water standpipe and paper towels","Hot and cold running water (or warm water), soap and means to dry hands"],a:3,e:"CDM 2015 requires suitable washing facilities including running water, soap, and drying facilities."},
+{t:2,q:"Someone has fallen from height and has no feeling in their legs. You should:",o:["Roll them onto their back and straighten their legs","Roll them onto their side and bend their legs","Keep them still — do not move them until medical help arrives","Raise their legs to restore circulation"],a:2,e:"Do not move a suspected spinal injury casualty. Movement can cause permanent paralysis."},
+{t:3,q:"What sort of rest area must your employer provide on a construction site?",o:["Any covered area","A covered area with seating","A covered area with tables, seating, and means to heat food and water","Nothing — there is no legal requirement"],a:2,e:"CDM 2015 requires rest facilities with a covered area, seating, tables, and means to heat food and water."},
+{t:4,q:"Why is it important to report all accidents?",o:["It might stop them happening again","Some types must be reported to the HSE under RIDDOR","Details must be in the accident book","All of these answers"],a:3,e:"All three are correct: learning and prevention, RIDDOR compliance, and maintaining accurate legal records."},
+{t:5,q:"Under the BSA, a higher-risk building must be registered with the BSR:",o:["Within one year of the Act coming into force","Before the building can be occupied","Once 50% of units are sold","Only if the building exceeds 30 metres in height"],a:1,e:"No HRB may be occupied until it has been registered with the BSR and a completion certificate has been issued."},
+{t:0,q:"A permit to work system is used for:",o:["All construction tasks on any site","High-risk tasks that need to be carried out under controlled, authorised conditions","Any task lasting more than a day","Tasks that require two or more people"],a:1,e:"Permits to work control high-hazard tasks: confined space entry, hot work, live electrical work, and pressurised systems."},
+{t:2,q:"What is a toe board on a scaffold platform used for?",o:["Protecting workers' feet from scaffold tubes","Preventing tools and materials falling off the edge","Acting as the bottom guardrail","Marking the outer edge of the platform"],a:1,e:"Toe boards (minimum 150 mm high) stop tools, materials and debris rolling off the platform and striking people below."},
+{t:1,q:"If you get a hazardous substance on your hands, two ways to stop it reaching your mouth:",o:["Wear protective gloves while working AND wash hands before eating","Put barrier cream on after eating and wear gloves when away from work","Wash work gloves before eating","None of these can prevent absorption"],a:0,e:"Gloves prevent initial skin contact; washing hands before eating removes any residual contamination."},
+{t:3,q:"In an emergency an 'assembly point' is:",o:["The site manager's office","The place of the incident","The welfare facilities","The specified place to gather safely after an evacuation"],a:3,e:"The assembly point is a pre-designated safe area for everyone to gather after evacuation so a roll call can be taken."},
+{t:4,q:"Before using any power tool, what should you always do?",o:["Ensure it is the newest model","Check it is in a safe, serviceable condition with no damage","Ensure you have the manufacturer's receipt","Make sure no one else needs it first"],a:1,e:"Pre-use inspection is essential: check cable and plug, guards are in place, no visible damage, and PAT test is current."},
+{t:0,q:"What is a toolbox talk?",o:["A short training session on a specific safety topic","A talk about where to buy tools","Your first training session when you arrive on site","A sales presentation from a tool supplier"],a:0,e:"Toolbox talks are brief, focused safety briefings on a specific hazard or topic relevant to the work being done."},
+{t:0,q:"A risk assessment identifies:",o:["How to report accidents","The site working hours","The hazards and the safe way of doing the job","Where the first-aid box is kept"],a:2,e:"A risk assessment identifies the significant hazards in a task and determines the control measures needed to work safely."},
+{t:1,q:"What does TILE stand for in manual handling assessment?",o:["Task, Individual, Load, Environment","Time, Injury, Lifting, Equipment","Training, Inspection, Limits, Evaluation","Task, Inspection, Load, Examination"],a:0,e:"TILE covers the four key factors in any manual handling risk assessment: Task, Individual, Load, and Environment."},
+{t:1,q:"What is the correct technique for lifting a load from floor level?",o:["Keep legs straight and bend at the waist","Squat, keep back straight, load close to body, rise using leg muscles","Lean forward over the load and pull it up","Twist at the waist to get extra leverage"],a:1,e:"Safe lifting: feet apart, squat to the load, straight back, keep load close to the body, rise using leg muscles — not the back."},
+{t:2,q:"How far should a leaning ladder extend above its landing point?",o:["0.5 metres","1 metre (approximately 5 rungs)","1.5 metres","2 metres"],a:1,e:"A leaning ladder must extend at least 1 metre (approximately 5 rungs) above the landing point to provide a safe handhold."},
+{t:2,q:"What is the purpose of a toe board on a scaffold platform?",o:["Protects workers' feet from scaffold tubes","Prevents tools and materials falling off the edge onto people below","Acts as the bottom guardrail","Marks the outer edge of the platform visually"],a:1,e:"Toe boards (minimum 150 mm high) stop tools, materials and debris rolling off the platform edge and striking people below."},
+{t:2,q:"When must a scaffold be inspected?",o:["Only when first erected","Once a month","Before first use, after assembly, after any event affecting stability, and at least every 7 days","Once every 3 months"],a:2,e:"The Work at Height Regulations 2005 require scaffold inspections before first use, after assembly, after any stability-affecting event, and at intervals not exceeding 7 days."},
+{t:3,q:"What is the main health risk from regular exposure to silica dust?",o:["Skin rashes","Silicosis — a serious and potentially fatal lung disease — and increased risk of lung cancer","Hearing loss","Eye irritation only"],a:1,e:"Silica dust causes silicosis, an irreversible and potentially fatal lung disease, as well as significantly increasing the risk of lung cancer with long-term exposure."},
+{t:3,q:"Which colour denotes a 'warning' safety sign?",o:["Red","Blue","Yellow or amber — triangular shape","Green"],a:2,e:"Warning signs have a yellow or amber background with a black triangular border and symbol, e.g. 'Warning: overhead obstacle'."},
+{t:3,q:"What colour is a 'mandatory instruction' safety sign (e.g. 'Wear hard hat')?",o:["Red","Blue with white symbol","Yellow triangular","Green rectangular"],a:1,e:"Mandatory instruction signs — requiring a specific action to be taken — have a blue circular background with a white symbol or text."},
+{t:3,q:"What colour is a prohibition safety sign (e.g. 'No smoking')?",o:["Red circular with a diagonal line","Blue circular","Yellow triangular","Green rectangular"],a:0,e:"Prohibition signs are red circular with a diagonal bar across the symbol, indicating something is forbidden."},
+{t:4,q:"What is the purpose of a 'LOLER' thorough examination?",o:["To check electrical installation records","To ensure lifting equipment is safe to use and within its service life","To inspect scaffolding for stability","To check fire extinguishers are in date"],a:1,e:"LOLER (Lifting Operations and Lifting Equipment Regulations 1998) requires thorough examination of lifting equipment at regular intervals to confirm it is safe to use."},
+{t:5,q:"What are the two primary safety risks the Building Safety Act focuses on in higher-risk buildings?",o:["Flooding and structural overload","Spread of fire and structural failure","Gas explosions and toxic contamination","Electrical faults and water ingress"],a:1,e:"The BSA focuses specifically on risks from the spread of fire and structural failure — the two key risks identified by the Grenfell Tower inquiry."},
+{t:5,q:"Under the BSA, what must an Accountable Person do if they identify a building safety risk?",o:["Wait until the annual safety review","Take all reasonable steps to prevent the risk and reduce its severity, notifying the BSR if serious","Only act if the risk is formally rated as high","Inform the original developer"],a:1,e:"Accountable Persons have an ongoing duty to identify and manage building safety risks. Serious risks that cannot be controlled must be notified to the Building Safety Regulator."},
+{t:5,q:"The Building Safety Act 2022 was primarily introduced following:",o:["Widespread flooding of residential buildings in 2021","The Grenfell Tower fire in June 2017","Changes to EU building regulations post-Brexit","A government review of planning law"],a:1,e:"The Grenfell Tower fire (72 deaths, June 2017) exposed systemic failures in building safety management and triggered the Building Safety Act 2022."},
+],
+
+// ══ EXAM 5 ══════════════════════════════════════════════
+[
+{t:0,q:"The Health and Safety at Work Act 1974 places legal duties on:",o:["Employers only","Operatives only","All people at work — employers, employees and self-employed","Self-employed people only"],a:2,e:"HSWA 1974 places duties on all persons at work. No one on a construction site is exempt."},
+{t:0,q:"Which of these is NOT your legal duty as a worker?",o:["Look after your own health and safety","Look after the health and safety of others affected by your work","Write your own risk assessments","Not interfere with anything provided for health and safety"],a:2,e:"Writing risk assessments is the employer's responsibility. Workers must co-operate and take care of themselves and others."},
+{t:0,q:"You can help prevent accidents on site MOST effectively by:",o:["Reporting unsafe working conditions to your supervisor","Becoming a trained first aider","Knowing where the first-aid kit is","Knowing how to call for help quickly"],a:0,e:"Proactive hazard reporting is the most effective accident prevention — it removes dangers before anyone is hurt."},
+{t:0,q:"A permit to work system is used for:",o:["All construction tasks","High-risk tasks that need controlled, authorised conditions","Any task lasting more than a day","Tasks requiring two or more people"],a:1,e:"Permits to work control high-hazard tasks: confined space entry, hot work, live electrical work, and pressurised systems."},
+{t:1,q:"The most important reason for keeping your work area clean and tidy:",o:["To prevent slips, trips and falls","So you don't have a big clean-up at week end","So waste skips can be emptied more often","To help the environment"],a:0,e:"Slips, trips and falls from poor housekeeping are a leading cause of workplace injuries."},
+{t:1,q:"Your doctor has prescribed medication. The most important question to ask is:",o:["Will it make me drowsy or unsafe to work with machinery?","Will I work more slowly?","Will my supervisor find out?","Will I oversleep?"],a:0,e:"Many prescription drugs affect alertness, reaction time and coordination — all critical on a construction or HVAC site."},
+{t:1,q:"To prevent a hazardous substance passing from your hands to your mouth, you should:",o:["Wear protective gloves while working AND wash hands before eating","Put barrier cream on before eating instead of washing","Wash your work gloves before eating","None of these — it cannot be prevented"],a:0,e:"Gloves prevent initial contact; thorough hand-washing before eating removes any residual contamination."},
+{t:1,q:"You should not rely on barrier cream alone to protect skin from harmful substances because:",o:["It costs too much to use every day","Many harmful substances penetrate straight through barrier cream","It is difficult to wash off","It can irritate the skin over time"],a:1,e:"Barrier cream offers limited protection and will not stop many chemicals and solvents from reaching the skin."},
+{t:2,q:"When must a scaffold be inspected?",o:["Only when first erected","Once a month","Before first use, after assembly, after any event affecting stability, and at least every 7 days","Once every 3 months"],a:2,e:"Work at Height Regulations 2005 require scaffold inspection before first use, after assembly, after any stability-affecting event, and at intervals not exceeding 7 days."},
+{t:2,q:"What is the purpose of a toe board on a scaffold?",o:["Protects workers' ankles from scaffold tubes","Prevents tools and materials falling off the edge","Acts as the bottom guardrail","Marks the outer edge visually"],a:1,e:"Toe boards (minimum 150 mm high) prevent tools, materials and debris rolling off the platform edge."},
+{t:2,q:"Before using a lifting sling, you must check:",o:["The colour code for currency only","The date of purchase","The condition, safe working load, and that it is free from cuts, knots, and damage","The name of the last person who used it"],a:2,e:"Check the colour-coded inspection tag is current, the SWL is suitable, and inspect for cuts, tears, heat damage, knots, or chemical damage."},
+{t:2,q:"What does 'SWL' mean on lifting equipment?",o:["Safe Working Length","Safe Working Load — the maximum load it is rated to lift safely","Structural Working Limit","Swing Working Leverage"],a:1,e:"SWL is the maximum mass a piece of lifting equipment is certified to lift under defined conditions. Exceeding the SWL is illegal and dangerous."},
+{t:3,q:"If someone is in contact with a live electrical cable, the best action is:",o:["Phone the electricity company first","Dial 999 for an ambulance before anything else","Switch off the power supply first, then call for help","Pull them away from the cable immediately"],a:2,e:"Always isolate the power supply first — touching someone on a live cable will electrocute you too. Only when power is off should you approach."},
+{t:3,q:"The early symptoms of Weil's disease are easily confused with:",o:["Dermatitis","Diabetes","Hay fever","Flu (influenza)"],a:3,e:"Leptospirosis initially causes fever, chills, headache, and muscle pain — identical to flu. Workers near water who develop these symptoms must tell their doctor."},
+{t:3,q:"Which animal is the most likely carrier of Weil's disease on construction sites?",o:["Rabbits","Rats","Squirrels","Dogs"],a:1,e:"Rats are the primary reservoir of Leptospira bacteria in the UK. Their urine contaminates soil, mud, and water."},
+{t:3,q:"After finishing dusty cutting work and needing to sweep up, what should you do?",o:["Dampen down the area before sweeping","Ensure there is good ventilation","Put your RPE back on before sweeping","All of these answers"],a:3,e:"All three actions reduce dust exposure during clean-up: dampening reduces re-suspension, ventilation dilutes airborne dust, and RPE protects against residual particles."},
+{t:4,q:"Hand-arm vibration syndrome (HAVS) can be caused by regular use of which tools?",o:["Any hand tool used repeatedly","Vibrating tools such as grinders, drills, compactors, and chainsaws","Only pneumatic tools","Only tools used outdoors"],a:1,e:"HAVS results from regular exposure to vibration transmitted through vibrating hand-held tools. It causes permanent nerve and blood vessel damage."},
+{t:4,q:"When should hearing protection be worn on an HVAC or construction site?",o:["Only when noise is painful","When asked by the site manager on any occasion","When noise reaches or exceeds the upper action value of 85 dB(A)","At all times everywhere on site"],a:2,e:"The Control of Noise at Work Regulations 2005 require hearing protection use at the upper action value of 85 dB(A)."},
+{t:4,q:"Before using any power tool, what should you always do?",o:["Ensure it is the newest model available","Check it is in safe, serviceable condition with no damage or defects","Ensure you have the manufacturer's receipt","Make sure no one else needs it first"],a:1,e:"A pre-use inspection is essential: cable and plug condition, guard in place, no visible damage, and PAT test current."},
+{t:4,q:"What is the purpose of guarding on a power tool?",o:["To make the tool look more professional","To prevent contact between the operator and dangerous moving parts","To hold the tool together structurally","To meet manufacturer's warranty conditions"],a:1,e:"Guards prevent accidental contact with cutting blades, abrasive wheels, and other dangerous moving parts. Removing guards is illegal under PUWER."},
+{t:5,q:"Under the BSA, residents in HRBs have the right to:",o:["Carry out their own structural repairs","Demand cosmetic improvements to communal areas","Raise safety concerns with the Accountable Person and escalate to the BSR if not resolved","Withhold service charges if unhappy with management"],a:2,e:"The BSA gives residents the right to raise building safety concerns and to escalate to the BSR if they are not addressed."},
+{t:5,q:"What is a 'Mandatory Occurrence Report' under the Building Safety Act?",o:["A monthly fire safety maintenance log","A report that the Accountable Person must make to the BSR when certain specified safety events occur","A report to the local council about maintenance issues","A weekly safety status report to residents"],a:1,e:"Mandatory Occurrence Reporting requires Accountable Persons to report specified building safety events to the BSR."},
+{t:5,q:"BSA dutyholder obligations during construction apply to:",o:["The principal contractor only","Only projects exceeding £10 million","The client, principal designer, and principal contractor","Only on residential high-rise projects"],a:2,e:"BSA dutyholder obligations apply to the client, principal designer, and principal contractor — the same parties as CDM 2015, with enhanced obligations for HRBs."},
+{t:0,q:"What is a toolbox talk?",o:["A short training session on a specific safety topic","A talk about where to buy tools","Your first training session on site","A sales presentation from a tool supplier"],a:0,e:"Toolbox talks are brief, focused safety briefings on a specific hazard or topic relevant to the current work."},
+{t:1,q:"You should not use white spirit or solvents to clean your hands because:",o:["They strip the natural protective oils from your skin, causing dermatitis","They permanently remove the top skin layer","They block the pores of the skin","They carry bacteria harmful to the skin"],a:0,e:"Solvents dissolve the skin's lipid barrier, removing protective oils and leaving skin susceptible to irritation and chemical penetration."},
+{t:2,q:"Before climbing a ladder, what should you check?",o:["That you have a colleague at the bottom at all times","That the ladder is in good condition, footed correctly, and secured at the top where practicable","That you are wearing a full body harness","That there is soft ground below"],a:1,e:"Pre-use checks: inspect for damage, ensure feet are on firm level ground, and tie at the top or have someone foot it at the base."},
+{t:3,q:"Exposure to engine oil and other mineral oils over time can cause:",o:["Skin conditions including dermatitis and oil acne","Heart disease","Chest infections","Hand-arm vibration syndrome"],a:0,e:"Repeated skin contact with mineral oils and cutting fluids can cause folliculitis, dermatitis, and oil acne."},
+{t:4,q:"The main objective of an accident investigation is:",o:["Find out who was to blame","Identify causes to prevent recurrence","Calculate the cost of damage","Record injuries for insurance purposes"],a:1,e:"Effective accident investigation focuses on root causes and systemic failures, not blame. The output is preventive actions."},
+{t:5,q:"The Building Safety Act 2022 was primarily introduced in response to:",o:["Widespread flooding of residential buildings","The Grenfell Tower fire of June 2017","Changes to EU building regulations","A review of planning law"],a:1,e:"The Grenfell Tower fire exposed systemic failures in building safety management and directly triggered the Building Safety Act 2022."},
+{t:0,q:"Who is responsible for reporting unsafe conditions on a construction site?",o:["The site manager alone","The HSE","The client","Everyone on site"],a:3,e:"Everyone on site has a duty to report unsafe conditions. Health and safety is a shared responsibility."},
+{t:2,q:"What is a scaffold inspection tag showing 'DANGER — DO NOT USE' in red?",o:["Use it carefully for light work","Remove the tag and use it if it looks sturdy","Do not use the scaffold — report it immediately","Ask a colleague if it is safe"],a:2,e:"A red danger tag means a competent person has found the scaffold to be unsafe. It must not be used until re-inspected and cleared."},
+{t:3,q:"What should a first-aid box NOT contain?",o:["Bandages","Adhesive plasters","Safety pins","Aspirin or other painkillers"],a:3,e:"First-aid boxes must not contain medicines. First aiders treat injuries — they do not prescribe or administer medication."},
+{t:1,q:"If you get a hazardous substance on your hands, TWO ways to stop it reaching your mouth:",o:["Wear protective gloves while working AND wash hands before eating","Put barrier cream on after eating and wear gloves when away from work","Wash work gloves before eating","None of these — it cannot be prevented"],a:0,e:"Gloves prevent initial skin contact; washing hands before eating removes any residual contamination before it can be ingested."},
+{t:4,q:"Why is it important to report all accidents?",o:["It might stop them happening again","Some types must be reported to the HSE","Details must be in the accident book","All of these answers"],a:3,e:"All three are correct: learning and prevention, RIDDOR compliance, and maintaining accurate legal records."},
+{t:0,q:"Who is responsible for reporting unsafe conditions on a construction site?",o:["The site manager alone","The HSE inspectors","The client","Everyone on site"],a:3,e:"Everyone on site has a legal duty to report unsafe conditions — not just managers or safety officers."},
+{t:0,q:"What is a near miss?",o:["An incident where you were too late to see what happened","An event that could have caused injury but did not","An injury that nearly required hospitalisation","An injury that nearly caused absence from work"],a:1,e:"A near miss had the potential to cause harm but did not. All near misses must be reported and investigated to prevent future accidents."},
+{t:1,q:"What does TILE stand for in a manual handling risk assessment?",o:["Task, Individual, Load, Environment","Time, Injury, Lifting, Equipment","Training, Inspection, Limits, Evaluation","Task, Inspection, Load, Examination"],a:0,e:"TILE covers the four key factors in manual handling risk assessment: Task (what the operation involves), Individual (the person doing it), Load (what is being moved), and Environment (where it is done)."},
+{t:1,q:"When lifting a load from floor level, which technique is correct?",o:["Keep legs straight and bend at the waist","Squat, keep back straight, load close to body, rise using leg muscles","Lean forward and pull the load upward","Twist at the waist to swing the load up"],a:1,e:"Safe lifting: feet apart for stability, squat to the load keeping the back straight, hold load close to the body, and rise using the powerful leg muscles."},
+{t:2,q:"At what minimum height must a scaffold working platform have guardrails?",o:["1 metre","2 metres","3 metres","4 metres"],a:1,e:"Working platforms 2 metres or more above ground must have guardrails on all open sides under the Work at Height Regulations 2005."},
+{t:2,q:"What must you do before climbing a ladder?",o:["Ensure a colleague is at the bottom at all times","Check it is in good condition, footed correctly, and secured at the top where practicable","Ensure you are wearing a full body harness","Ensure there is soft ground below in case of a fall"],a:1,e:"Pre-use checks for any ladder: inspect stiles and rungs for damage, ensure feet are on firm level ground, and tie at the top or have someone foot it at the base."},
+{t:3,q:"Which colour indicates a 'warning' safety sign?",o:["Red","Blue","Yellow or amber triangular","Green"],a:2,e:"Warning signs have a yellow or amber background with a black triangular border — e.g. 'Warning: overhead obstacle' or 'Warning: toxic substance'."},
+{t:3,q:"Which colour denotes a 'mandatory instruction' safety sign?",o:["Red circular","Blue circular with white symbol","Yellow triangular","Green rectangular"],a:1,e:"Mandatory instruction signs (e.g. 'Wear hard hat', 'Wear safety boots') have a blue circular background with a white symbol or text."},
+{t:3,q:"What colour are prohibition safety signs such as 'No smoking'?",o:["Red circular with a diagonal line","Blue circular","Yellow triangular","Green rectangular"],a:0,e:"Prohibition signs are red with a circular shape and a diagonal line through the symbol — indicating something is forbidden."},
+{t:3,q:"What colour are 'safe condition' safety signs (e.g. fire exit, first aid)?",o:["Red","Blue","Yellow","Green with white symbol"],a:3,e:"Safe condition signs (emergency exits, first aid points, assembly points) have a green background with a white symbol or text."},
+{t:4,q:"What is the main purpose of a LOLER thorough examination?",o:["To check electrical installation records","To ensure lifting equipment is safe to use and within its inspection period","To inspect scaffolding stability","To check fire extinguisher dates"],a:1,e:"LOLER requires thorough examination of all lifting equipment at regular intervals — every 6 months for equipment used to lift people, every 12 months for other lifting equipment."},
+{t:4,q:"When working on an electrical system, what must be done before starting work?",o:["Put on rubber gloves and proceed","Isolate and lock off the electrical supply (lockout/tagout) before starting","Work quickly to minimise time near the hazard","Ask a colleague to stand by in case something goes wrong"],a:1,e:"Electrical equipment must be isolated and locked off using lockout/tagout procedures to prevent accidental energisation. Never work on live electrical systems without specific authorisation and training."},
+{t:5,q:"What is the main purpose of the Building Safety Act 2022?",o:["To reduce construction costs","To improve the safety and standards of buildings, especially higher-risk residential buildings","To replace all previous fire safety legislation","To regulate planning applications"],a:1,e:"The BSA 2022 overhauled the regulatory framework for building safety, particularly for higher-risk residential buildings, following the Grenfell Tower fire."},
+{t:5,q:"Under the Building Safety Act, what is the 'golden thread' of information?",o:["A fire safety checklist required on all sites","A continuous, accurate, up-to-date digital record of building information throughout its lifecycle","The name of the principal contractor on HRBs","A new type of fire-resistant cabling"],a:1,e:"The golden thread ensures the right people always have access to accurate, up-to-date information about a building — from design through construction to occupation and beyond."},
+{t:5,q:"What height defines a 'higher-risk building' under the Building Safety Act?",o:["5 metres or more","11 metres or more","18 metres or more (or 7+ storeys) with at least 2 dwellings","30 metres or more"],a:2,e:"An HRB is defined as a building 18 metres or more in height (or with 7 or more storeys) containing at least 2 residential units."},
+{t:5,q:"Who is the Accountable Person required to register an HRB with?",o:["The local council","The Building Safety Regulator (BSR)","The Health and Safety Executive directly","The fire and rescue service"],a:1,e:"The Accountable Person must register higher-risk buildings with the Building Safety Regulator before the building can be occupied."},
+],
+
+// ══ EXAM 6 — ALL TOPICS FINAL EXAM ══════════════════════
+[
+{t:0,q:"Who is responsible for reporting unsafe conditions on a construction site?",o:["The site manager alone","The HSE","The client","Everyone on site"],a:3,e:"Health and safety is everyone's responsibility. Every worker has a legal duty to report unsafe conditions."},
+{t:0,q:"What is a near miss?",o:["An incident where you were too late to see what happened","An event that could have caused injury but did not","An injury that nearly required hospitalisation","An injury that nearly caused absence from work"],a:1,e:"A near miss had the potential to cause harm but did not. All near misses must be reported and investigated."},
+{t:0,q:"A risk assessment identifies:",o:["How to report accidents after they happen","The site working hours","The significant hazards and the control measures needed to work safely","Where the first-aid box is kept"],a:2,e:"A risk assessment identifies hazards and determines the control measures needed to reduce risk to an acceptable level."},
+{t:0,q:"You can help prevent accidents on site MOST effectively by:",o:["Reporting unsafe working conditions to your supervisor immediately","Becoming a trained first aider","Knowing where the first-aid kit is","Knowing how to call for help quickly"],a:0,e:"Removing hazards before they cause harm is the most direct and effective form of accident prevention."},
+{t:1,q:"Your employer must discuss health and safety with you because:",o:["It means you will never need further training","Having done so, the employer has no further legal responsibility","They must inform you of things that protect your health and safety","You have no personal health and safety responsibilities"],a:2,e:"Employers must ensure workers have the information and instruction they need to work safely."},
+{t:1,q:"Who should attend a site induction?",o:["Cleaners only","Architects and engineers only","Construction trade workers only","Everyone going onto the site"],a:3,e:"Every person entering the site — workers, managers, visitors, and delivery drivers — must complete the site induction."},
+{t:1,q:"The MAIN reason for attending a site induction is:",o:["To meet other new starters","So risk assessments can be handed out","Site health and safety rules and hazards will be explained","Permits to work will be distributed"],a:2,e:"Induction ensures all site entrants know the specific hazards, rules, emergency procedures, and welfare facilities before starting work."},
+{t:1,q:"Someone gets grit in their eye. The best action is:",o:["Hold the eye open and wipe with clean tissue","Ask them to rub the eye until it waters","Tell them to blink a couple of times","Hold the eye open and flush with sterile water or eyewash"],a:3,e:"Flushing with sterile water removes particles safely. Rubbing or wiping can scratch the cornea or drive particles deeper."},
+{t:2,q:"How do you know a high-risk job needs a permit to work?",o:["Other workers will tell you","The HSE will tell you","You will not be allowed to start until the permit has been formally issued","Permits to work are only for supervisors"],a:2,e:"The permit to work system prevents the work starting until proper authorisation has been given. No permit means no work."},
+{t:2,q:"What does a red 'DANGER — DO NOT USE' scaffold tag mean?",o:["Use it carefully for light work only","Remove the tag and proceed if it looks sturdy","Do not use the scaffold — report it immediately","Ask a colleague if it is safe"],a:2,e:"A red danger tag means a competent person found the scaffold unsafe. It must not be used until re-inspected and cleared."},
+{t:2,q:"At what height must a scaffold platform have guardrails?",o:["1 metre","2 metres","3 metres","4 metres"],a:1,e:"Working platforms 2 metres or more above ground must have guardrails on all open sides."},
+{t:2,q:"What is the minimum height of a scaffold top guardrail?",o:["500 mm","750 mm","950 mm","1200 mm"],a:2,e:"The top guardrail must be at least 950 mm above the working platform surface."},
+{t:3,q:"A first-aid box should NOT contain:",o:["Bandages","Adhesive plasters","Safety pins","Aspirin or other over-the-counter painkillers"],a:3,e:"First-aid boxes must not contain medicines. First aiders treat injuries — they do not administer medications."},
+{t:3,q:"The first thing to do when you find an injured person is:",o:["Tell your supervisor","Check for dangers to yourself before approaching","Move them to a safe location","Ask them what happened"],a:1,e:"Scene safety assessment always comes first. Creating a second casualty by rushing in without checking for hazards makes everything worse."},
+{t:3,q:"If someone burns their hand, what should you do?",o:["Put it under cold running water for at least 10 minutes","Tell them to keep the hand moving to ease the pain","Apply Vaseline or barrier cream","Wrap a handkerchief tightly around it"],a:0,e:"Cold running water for at least 10 minutes (ideally 20 minutes) limits tissue damage and reduces pain. Never apply anything to a fresh burn."},
+{t:3,q:"If you think someone has broken their leg, what should you do?",o:["Lie them on their side","Use your belt to strap their legs together","Call for a first aider or emergency help and keep them still","Lie them on their back and raise the leg"],a:2,e:"Suspected fractures require proper first aid. Do not move the limb. Call for a first aider or emergency services."},
+{t:4,q:"You should not use white spirit or solvents to clean your hands because:",o:["They are a fire hazard near ignition sources","They strip the skin's natural protective oils, causing dryness, cracking, and dermatitis","They permanently remove the top skin layer","They contain bacteria harmful to skin"],a:1,e:"Regular solvent use destroys the skin's lipid barrier, allowing irritants and chemicals to penetrate and causing dermatitis."},
+{t:4,q:"Direct sunlight can cause which serious health effect for outdoor workers?",o:["Dermatitis","Rickets","Acne","Skin cancer"],a:3,e:"UV radiation from prolonged sun exposure causes skin cancer, including melanoma. HVAC engineers on rooftop plant must protect their skin."},
+{t:4,q:"Which of the following causes hand-arm vibration syndrome (HAVS)?",o:["Working in cold conditions","Regular use of vibrating tools such as angle grinders, power drills, and compactors","Heavy manual handling over many years","Working at height without a harness"],a:1,e:"HAVS results from sustained exposure to vibration from hand-held power tools. It causes permanent damage to nerves and circulation in the hands and fingers."},
+{t:4,q:"When should hearing protection be worn by an HVAC operative?",o:["Only when noise is painful or causing discomfort","Whenever the site manager requests it","When noise exposure is at or above the upper action value of 85 dB(A)","At all times on any construction site"],a:2,e:"At the upper action value (85 dB(A)), wearing hearing protection is mandatory under the Control of Noise at Work Regulations 2005."},
+{t:5,q:"The Building Safety Act was introduced primarily in response to:",o:["Widespread flooding of residential buildings","The Grenfell Tower fire of June 2017","Changes to EU building regulations","A government review of planning law"],a:1,e:"The Grenfell Tower fire (72 deaths, June 2017) exposed systemic failures in building safety management and triggered the BSA 2022."},
+{t:5,q:"What does the 'golden thread' of information mean under the Building Safety Act?",o:["A fire safety checklist for every floor","Accurate, up-to-date digital records of building information maintained throughout the building's lifecycle","The name of the principal contractor during construction","A new type of fire-resistant cable installation"],a:1,e:"The golden thread ensures the right people always have access to accurate, up-to-date information about a building."},
+{t:5,q:"Higher-risk buildings under the BSA are defined as:",o:["Any building over 3 storeys","All commercial offices","Residential buildings 18 metres or more in height (or 7+ storeys) with at least 2 dwellings","All publicly owned buildings"],a:2,e:"The BSA's most stringent requirements apply to residential buildings 18 metres+ in height (or 7+ storeys) with at least 2 residential units."},
+{t:5,q:"What must the Accountable Person do when aware of a building safety risk in an HRB?",o:["Wait until the annual safety review","Take all reasonable steps to prevent the risk and reduce its severity — notifying the BSR if serious","Only act if the risk is formally rated 'high'","Inform the original developer only"],a:1,e:"Accountable Persons have an ongoing duty to identify and manage building safety risks. Serious risks that cannot be controlled must be notified to the BSR."},
+{t:0,q:"Which THREE items should be in a method statement?",o:["Materials and tools needed; people and their competency; correct order and method of work","Site directions; holiday dates; and financial details","Acceptable risks; site rules; and transport arrangements","Only the start and end dates"],a:0,e:"A method statement must cover: what materials and equipment are needed, who is doing it and their required competencies, and the safe step-by-step sequence."},
+{t:1,q:"Someone gets a nail embedded in their foot. You must NOT pull it out because:",o:["You would introduce bacteria","The nail is plugging the wound and reducing blood loss","It would prove they weren't wearing safety boots","It would damage their boot"],a:1,e:"Removing a penetrating object can cause sudden severe haemorrhage. The object controls bleeding by sealing the wound."},
+{t:2,q:"You run out of water during wet cutting for dust control. Should you:",o:["Carry on as you have nearly finished","Stop immediately and refill with water before continuing","Ask others to clear the area and carry on","Carry on but arrange for someone to sweep up afterwards"],a:1,e:"Dry cutting creates harmful dust levels immediately. Work must stop the moment water control fails. Refill before restarting."},
+{t:3,q:"Someone drinks two pints at lunch. What should happen?",o:["Strong coffee and back to work","Stay away from site for the rest of the day","Wait one hour and return","Eat something and return after 30 minutes"],a:1,e:"Alcohol impairs judgement, balance, and reaction time. A person who has consumed alcohol must not return to site that working day."},
+{t:4,q:"The main objective of accident investigation is:",o:["Find out who is to blame","Identify root causes to prevent future recurrence","Calculate the financial cost of the accident","Record the injuries for the insurance claim"],a:1,e:"Accident investigation is a preventive tool. By identifying root causes and systemic failures, effective action can be taken to prevent recurrence."},
+{t:0,q:"What is a toolbox talk?",o:["A short training session on a specific safety topic","A talk about where to buy tools","Your first training session when you arrive on site","A sales presentation from a tool supplier"],a:0,e:"Toolbox talks are brief, focused safety briefings on a specific topic relevant to the work being carried out."},
+{t:1,q:"You should not use white spirit to clean your hands because it:",o:["Strips the skin's natural protective oils, causing dryness, cracking and dermatitis","Permanently removes the top layer of skin","Blocks the pores of the skin","Carries bacteria that attack the skin"],a:0,e:"Solvents dissolve the skin's lipid barrier, allowing irritants and chemicals to penetrate and causing occupational dermatitis."},
+{t:2,q:"What must you check before climbing a ladder?",o:["That you have a colleague at the bottom at all times","That the ladder is in good condition, footed correctly, and secured at the top where practicable","That you are wearing a full body harness","That there is soft ground below in case of a fall"],a:1,e:"Pre-use checks: inspect stiles and rungs for damage, feet on firm level ground, and tie at the top or have someone foot it."},
+{t:3,q:"Exposure to engine oil and other mineral oils over time can cause:",o:["Skin conditions including dermatitis and oil acne","Heart disease","Chest infections","Hand-arm vibration syndrome"],a:0,e:"Repeated skin contact with mineral oils causes folliculitis, dermatitis, and oil acne with prolonged exposure."},
+{t:4,q:"The main objective of carrying out an accident investigation:",o:["Find out who was to blame","Identify causes to prevent recurrence","Calculate the cost of damage","Record injuries for insurance purposes"],a:1,e:"Effective accident investigation focuses on root causes and systemic failures, not blame. The output is preventive actions."},
+{t:5,q:"Under the BSA, residents in higher-risk buildings have the right to:",o:["Carry out their own structural repairs","Demand cosmetic improvements to communal areas","Raise safety concerns with the Accountable Person and escalate to the BSR if not resolved","Withhold service charges if unhappy with management"],a:2,e:"The BSA gives residents the right to raise building safety concerns and escalate to the BSR if not addressed."},
+{t:0,q:"A near miss should be reported because:",o:["It is legally required for all near misses","It helps find someone to blame","It is a CDM requirement for all incidents","It allows investigation to prevent a future accident"],a:3,e:"Reporting near misses allows the underlying hazard to be identified and removed before someone is actually hurt."},
+{t:2,q:"What is the correct way to set up a leaning ladder?",o:["45 degrees — 1 out for every 1 up","75 degrees — 1 out for every 4 up","60 degrees — 1 out for every 2 up","90 degrees — vertical against the wall"],a:1,e:"The 1-in-4 rule: base 1 metre out for every 4 metres of height, giving the stable 75-degree working angle."},
+{t:3,q:"Which animal is the most common carrier of Weil's disease on construction sites?",o:["Rabbits","Rats","Squirrels","Pigeons"],a:1,e:"Rats are the primary reservoir of Leptospira bacteria. Their urine contaminates soil, mud, and water on site."},
+{t:4,q:"What is the legal minimum washing facility on a construction site?",o:["No legal requirement","A bowl, kettle and towel","A cold water standpipe and paper towels","Hot and cold running water (or warm water), soap and means to dry hands"],a:3,e:"CDM 2015 requires suitable washing facilities including running water, soap, and drying facilities."},
+{t:5,q:"What is the 'gateway' regime under the Building Safety Act?",o:["Security checkpoints at site entrances","Regulatory checkpoints that must be passed before key stages of an HRB project can proceed","An approval process for scaffold erection","A daily briefing between contractor and client"],a:1,e:"The three-gateway process requires BSR approval before construction starts (Gateway 2) and before occupation (Gateway 3), ensuring safety is verified at key milestones."},
+{t:0,q:"The Health and Safety at Work Act places legal duties on:",o:["Employers only","Operatives only","All people at work — employers, employees and self-employed","Self-employed people only"],a:2,e:"HSWA 1974 places duties on all persons at work. No one is exempt from health and safety responsibilities."},
+{t:0,q:"You cannot do a job as described in the method statement. What should you do?",o:["Make up your own way of doing the job","Do not start work until you have spoken to your supervisor","Ask workmates how they think it should be done","Contact the HSE directly"],a:1,e:"Stop work and consult your supervisor. The method statement may need to be revised before work can safely continue."},
+{t:1,q:"What does TILE stand for in a manual handling assessment?",o:["Task, Individual, Load, Environment","Time, Injury, Lifting, Equipment","Training, Inspection, Limits, Evaluation","Task, Inspection, Load, Examination"],a:0,e:"TILE covers the four key factors in manual handling assessment: Task, Individual, Load, and Environment."},
+{t:2,q:"When must scaffolding be inspected?",o:["Only when first erected","Once a month","Before first use, after assembly, after any event affecting stability, and at least every 7 days","Once every 3 months"],a:2,e:"The Work at Height Regulations 2005 require scaffold inspection before first use, after assembly, after any stability-affecting event, and at intervals not exceeding 7 days."},
+{t:3,q:"What is the main health risk from exposure to silica dust when cutting or grinding on site?",o:["Skin rashes","Silicosis — a serious and potentially fatal lung disease — and increased lung cancer risk","Hearing loss","Eye irritation only"],a:1,e:"Silica dust causes silicosis, an irreversible and potentially fatal lung disease, as well as significantly increasing the risk of lung cancer with long-term exposure."},
+{t:4,q:"What is SWL on a lifting sling or chain?",o:["Safe Working Length","Safe Working Load — the maximum load it is rated to lift safely","Structural Working Limit","Swing Working Leverage"],a:1,e:"SWL is the maximum mass a piece of lifting equipment is certified to lift safely under defined conditions. Exceeding the SWL is illegal and dangerous."},
+{t:4,q:"Before using any power tool, what should you always do?",o:["Ensure it is the newest model available","Check it is in safe, serviceable condition with no damage or defects","Ensure you have the manufacturer's receipt","Make sure no one else needs it first"],a:1,e:"A pre-use inspection is essential: check cable and plug condition, guard in place, no visible damage, and PAT test current."},
+{t:5,q:"Who is the 'client' under the Building Safety Act and what is their key duty?",o:["The construction company carrying out the work","The person commissioning the project — they must appoint competent dutyholders and ensure gateways are passed before occupation","The local council responsible for planning","The architect who designed the building"],a:1,e:"The client must appoint competent dutyholders, ensure the gateway process is followed, and may not allow occupation until the BSR issues a completion certificate."},
+{t:5,q:"Under the Building Safety Act, craft operatives working on HRBs must:",o:["Only comply with the same requirements as on any other building project","Have the skills, knowledge, experience and behaviours appropriate to their role on the HRB","Obtain a new specialist licence before starting work","Only work under direct supervision at all times"],a:1,e:"The BSA extends competence requirements to everyone working on higher-risk buildings. Craft operatives must demonstrate they have the appropriate knowledge, skills, and behaviours for their work."},
+{t:4,q:"What is RIDDOR and why is it important?",o:["A personal protective equipment standard","The Reporting of Injuries, Diseases and Dangerous Occurrences Regulations — requiring employers to report specified workplace incidents to the HSE","A noise at work regulation","A manual handling regulation"],a:1,e:"RIDDOR 2013 requires employers and the self-employed to report specified workplace deaths, injuries, diseases, and dangerous occurrences to the HSE. It helps identify trends and focus prevention efforts."},
+]
+
+];
+
+// ─── STATE ──────────────────────────────────────────────
+let currentExam=null,currentIndex=0,userAnswers=[],examTimer=null,timeLeft=45*60,timeUsed=0,examStartTime=null;
+
+// ─── HOME ────────────────────────────────────────────────
+function buildHome(){
+  const grid=document.getElementById('exam-grid');
+  grid.innerHTML='';
+  EXAM_THEMES.forEach((theme,i)=>{
+    const card=document.createElement('div');
+    card.className='exam-card';
+    card.innerHTML=`<div class="exam-card-head"><div class="exam-num">Mock ${i+1}</div><span class="exam-tag">${theme.focus.split(' ')[0]} Focus</span></div><div class="exam-card-title">${theme.focus}</div><div class="exam-card-info">50 Questions · 45 minutes · 90% pass mark</div><button class="exam-start-btn" onclick="startExam(${i})">Start Mock Exam ${i+1} →</button>`;
+    grid.appendChild(card);
+  });
+}
+
+// ─── START ───────────────────────────────────────────────
+function startExam(idx){
+  currentExam=idx;currentIndex=0;
+  userAnswers=new Array(allExams[idx].length).fill(null);
+  timeLeft=45*60;timeUsed=0;examStartTime=Date.now();
+  document.getElementById('home-screen').style.display='none';
+  document.getElementById('results-screen').style.display='none';
+  document.getElementById('exam-screen').style.display='block';
+  window.scrollTo(0,0);
+  buildDotMap();renderQuestion();startTimer();
+}
+
+function startTimer(){
+  clearInterval(examTimer);
+  examTimer=setInterval(()=>{
+    timeLeft--;
+    if(timeLeft<=0){clearInterval(examTimer);timeLeft=0;updateTimerDisplay();finishExam();return;}
+    updateTimerDisplay();
+  },1000);
+}
+
+function updateTimerDisplay(){
+  const m=Math.floor(timeLeft/60),s=timeLeft%60;
+  const el=document.getElementById('timer-val');
+  el.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  el.classList.toggle('warn',timeLeft<=300);
+}
+
+function buildDotMap(){
+  const map=document.getElementById('q-dot-map');
+  map.innerHTML='';
+  const total=allExams[currentExam].length;
+  for(let i=0;i<total;i++){
+    const d=document.createElement('div');
+    d.className='q-dot';d.textContent=i+1;d.id=`dot-${i}`;
+    d.onclick=()=>jumpTo(i);map.appendChild(d);
+  }
+}
+
+function updateDots(){
+  const total=allExams[currentExam].length;
+  for(let i=0;i<total;i++){
+    const d=document.getElementById(`dot-${i}`);
+    if(!d)continue;
+    d.className='q-dot';
+    if(i===currentIndex)d.classList.add('active');
+    if(userAnswers[i]!==null){
+      const q=allExams[currentExam][i];
+      d.classList.add(userAnswers[i]===q.a?'ans-ok':'ans-bad');
+    }
+  }
+}
+
+function renderQuestion(){
+  const qs=allExams[currentExam];
+  const q=qs[currentIndex];
+  const total=qs.length;
+  document.getElementById('q-number-label').textContent=`Question ${currentIndex+1} of ${total}`;
+  document.getElementById('q-topic-tag').textContent=TOPICS[q.t];
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('q-counter').textContent=`Question ${currentIndex+1} of ${total}`;
+  let score=0;
+  userAnswers.forEach((a,i)=>{if(a!==null&&a===qs[i].a)score++;});
+  document.getElementById('score-live').textContent=`Score: ${score}`;
+  document.getElementById('progress-fill').style.width=`${((currentIndex+1)/total)*100}%`;
+  const opts=document.getElementById('options-container');
+  opts.innerHTML='';
+  const answered=userAnswers[currentIndex]!==null;
+  const letters=['A','B','C','D'];
+  q.o.forEach((opt,oi)=>{
+    const div=document.createElement('div');
+    div.className='option';
+    if(answered){
+      div.classList.add('disabled');
+      if(oi===q.a)div.classList.add('correct');
+      else if(oi===userAnswers[currentIndex]&&oi!==q.a)div.classList.add('wrong');
+    }else{div.onclick=()=>selectAnswer(oi);}
+    div.innerHTML=`<div class="opt-letter">${letters[oi]}</div><div class="opt-text">${opt}</div>`;
+    opts.appendChild(div);
+  });
+  const fb=document.getElementById('feedback-box');
+  if(answered){
+    fb.className='feedback-box show '+(userAnswers[currentIndex]===q.a?'pass-fb':'fail-fb');
+    document.getElementById('feedback-title').textContent=userAnswers[currentIndex]===q.a?'✓ Correct!':'✗ Incorrect';
+    document.getElementById('feedback-text').textContent=q.e;
+  }else{fb.className='feedback-box';}
+  const nb=document.getElementById('next-btn');
+  if(currentIndex===total-1){nb.textContent=answered?'Finish Exam →':'Skip & Finish →';}
+  else{nb.textContent=answered?'Next →':'Skip →';}
+  document.getElementById('prev-btn').disabled=currentIndex===0;
+  updateDots();
+}
+
+function selectAnswer(idx){
+  if(userAnswers[currentIndex]!==null)return;
+  userAnswers[currentIndex]=idx;renderQuestion();
+}
+
+function jumpTo(idx){
+  currentIndex=idx;renderQuestion();
+  window.scrollTo(0,document.getElementById('exam-screen').offsetTop-70);
+}
+
+function nextQuestion(){
+  const total=allExams[currentExam].length;
+  if(currentIndex<total-1){currentIndex++;renderQuestion();window.scrollTo(0,document.getElementById('exam-screen').offsetTop-70);}
+  else{finishExam();}
+}
+
+function prevQuestion(){
+  if(currentIndex>0){currentIndex--;renderQuestion();window.scrollTo(0,document.getElementById('exam-screen').offsetTop-70);}
+}
+
+function quitExam(){
+  if(confirm('Are you sure you want to quit? Your progress will be lost.')){
+    clearInterval(examTimer);goHome();
+  }
+}
+
+function finishExam(){
+  clearInterval(examTimer);
+  timeUsed=Math.round((Date.now()-examStartTime)/1000);
+  showResults();
+}
+
+function showResults(){
+  document.getElementById('exam-screen').style.display='none';
+  document.getElementById('results-screen').style.display='block';
+  window.scrollTo(0,0);
+  const qs=allExams[currentExam];
+  const total=qs.length;
+  let correct=0;
+  userAnswers.forEach((a,i)=>{if(a===qs[i].a)correct++;});
+  const pct=Math.round((correct/total)*100);
+  const passed=correct>=45;
+  document.getElementById('r-verdict').textContent=passed?'PASSED':'FAILED';
+  document.getElementById('r-verdict').className='result-verdict '+(passed?'pass':'fail');
+  document.getElementById('r-score').textContent=`${correct} / ${total} correct — ${pct}%`;
+  document.getElementById('r-msg').textContent=passed
+    ?`Well done! You scored ${pct}% — above the 90% pass mark. You are on track for the real BESA HSE Test.`
+    :`You scored ${pct}%. You need 90% (45/${total}) to pass. Review the topics below and retake to improve.`;
+  document.getElementById('r-correct').textContent=correct;
+  document.getElementById('r-wrong').textContent=total-correct;
+  document.getElementById('r-pct').textContent=pct+'%';
+  const tm=timeUsed;
+  document.getElementById('r-time').textContent=`${String(Math.floor(tm/60)).padStart(2,'0')}:${String(tm%60).padStart(2,'0')}`;
+  const reviewList=document.getElementById('review-list');
+  reviewList.innerHTML='';
+  const letters=['A','B','C','D'];
+  qs.forEach((q,i)=>{
+    const ua=userAnswers[i];
+    const ok=ua===q.a;
+    const item=document.createElement('div');
+    item.className='review-item '+(ok?'r-ok':'r-bad');
+    item.innerHTML=`<div class="ri-header"><span class="ri-q">Q${i+1} · ${TOPICS[q.t]}</span><span class="ri-icon ${ok?'ok':'bad'}">${ok?'✓':'✗'}</span></div><div class="ri-text">${q.q}</div><div class="ri-answer">Correct answer: <span class="ri-ok-ans">${letters[q.a]}. ${q.o[q.a]}</span>${ua!==null&&!ok?` · Your answer: <span class="ri-my-ans">${letters[ua]}. ${q.o[ua]}</span>`:ua===null?' · <em>Not answered</em>':''}</div>`;
+    reviewList.appendChild(item);
+  });
+}
+
+function restartExam(){startExam(currentExam);}
+function goHome(){
+  document.getElementById('exam-screen').style.display='none';
+  document.getElementById('results-screen').style.display='none';
+  document.getElementById('home-screen').style.display='block';
+  window.scrollTo(0,0);
+}
+
+buildHome();
+</script>
+</body>
+</html>
