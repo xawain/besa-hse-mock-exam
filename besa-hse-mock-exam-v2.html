@@ -88,7 +88,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 .btn-primary{background:var(--red);color:#fff;border:none;border-radius:8px;padding:11px 28px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:.5px;cursor:pointer;transition:background .15s}
 .btn-primary:hover{background:var(--red-l)}
 .btn-primary:disabled{background:var(--dim);cursor:not-allowed}
-.q-dot-map{display:flex;flex-wrap:wrap;gap:5px;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.q-dot-map{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
 .q-dot{width:22px;height:22px;border-radius:4px;background:var(--card2);border:1px solid var(--border);font-size:9px;font-weight:600;color:var(--dim);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .1s}
 .q-dot:hover{border-color:var(--border2)}
 .q-dot.active{border-color:var(--red);color:var(--red)}
@@ -192,6 +192,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
     <button class="quit-btn" onclick="quitExam()">Quit</button>
   </div>
   <div class="question-area">
+    <div class="q-dot-map" id="q-dot-map"></div>
     <div class="q-number" id="q-number-label"></div>
     <div class="q-topic-tag" id="q-topic-tag"></div>
     <div class="q-text" id="q-text"></div>
@@ -204,7 +205,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
       <button class="btn-secondary" id="prev-btn" onclick="prevQuestion()">← Previous</button>
       <button class="btn-primary" id="next-btn" onclick="nextQuestion()">Next →</button>
     </div>
-    <div class="q-dot-map" id="q-dot-map"></div>
   </div>
 </div>
 
