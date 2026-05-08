@@ -123,7 +123,56 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 .btn-ghost:hover{border-color:var(--border2);color:var(--txt)}
 .site-footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;font-size:12px;color:var(--dim);margin-top:3rem}
 .site-footer a{color:var(--dim);text-decoration:underline}
-@media(max-width:540px){.hero{padding:1.6rem 1rem 1.25rem}.exam-grid{grid-template-columns:1fr}.nav-badge{display:none}}
+@media(max-width:820px){
+  .nav{padding:0 1rem}
+  .section{padding:1rem;max-width:680px}
+  .hero{padding:1.35rem 1rem 1.1rem}
+  .hero-title{font-size:clamp(2rem,8vw,2.75rem)}
+  .topics-banner{padding:.85rem 1rem}
+  .topics-list{gap:7px}
+  .exam-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+  .exam-card{padding:.9rem 1rem}
+  .exam-header{top:60px;padding:.75rem 1rem;gap:.75rem}
+  .question-area{padding:1.25rem 1rem;max-width:680px}
+  .q-dot-map{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding-bottom:1rem;margin-bottom:1.25rem}
+  .q-dot{width:28px;height:28px;min-width:28px;font-size:10px}
+  #results-screen{padding:1.25rem 1rem}
+}
+@media(max-width:620px){
+  .nav{height:56px}
+  .nav-logo{width:34px;height:34px}
+  .nav-title{font-size:16px}
+  .nav-sub{font-size:10px}
+  .nav-badge{display:none}
+  .hero{padding:1.15rem 1rem 1rem}
+  .hero-title{font-size:2.35rem}
+  .hero-desc{font-size:14px;line-height:1.5}
+  .section-title{font-size:1.2rem}
+  .topics-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .topic-pill{text-align:center;white-space:normal}
+  .exam-grid{grid-template-columns:1fr}
+  .exam-card{padding:1rem}
+  .exam-header{top:56px;align-items:stretch}
+  .exam-progress-wrap{flex-basis:100%;min-width:0;order:1}
+  .timer-wrap{order:2;flex:1;justify-content:center}
+  .quit-btn{order:3;min-width:86px}
+  .q-text{font-size:1rem;margin-bottom:1.25rem}
+  .option{padding:.9rem 1rem}
+  .nav-btns{margin-top:1.4rem}
+  .btn-secondary,.btn-primary,.btn-ghost{padding:10px 14px}
+  .result-hero{padding:2rem 1rem}
+  .result-verdict{font-size:3rem}
+  .results-actions{flex-direction:column}
+}
+@media(max-width:380px){
+  .nav-title{font-size:15px}
+  .hero-title{font-size:2.05rem}
+  .topics-list{grid-template-columns:1fr}
+  .exam-card-head{align-items:flex-start;gap:.75rem}
+  .exam-tag{text-align:right}
+  .nav-btns{flex-direction:column}
+  .nav-btns button{width:100%}
+}
 </style>
 </head>
 <body>
@@ -168,9 +217,9 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
   </div>
 
   <footer class="site-footer">
-    D.Brown aka Tufi &nbsp;·&nbsp; Powered by dbX1 &nbsp;·&nbsp; Based on CITB GT100 question bank &amp; BESA HSE Craft &amp; Operative SKILLcard syllabus &nbsp;·&nbsp; Updated 2025<br>
+    Dawain Brown aka Tufi &nbsp;·&nbsp; Powered by dbX1 &nbsp;·&nbsp; Based on CITB GT100 question bank &amp; BESA HSE Craft &amp; Operative SKILLcard syllabus &nbsp;·&nbsp; Updated 2025<br>
     <a href="https://besa.academy" target="_blank">besa.academy</a> &nbsp;·&nbsp; <a href="https://www.skillcard.org.uk" target="_blank">skillcard.org.uk</a> &nbsp;·&nbsp; <a href="https://www.citb.co.uk" target="_blank">citb.co.uk</a><br>
-    <small>© 2025 D.Brown (dbX1). All rights reserved. Unauthorised copying or reproduction is prohibited.</small>
+    <small>© 2025 Dawain Brown (dbX1). All rights reserved. Unauthorised copying or reproduction is prohibited.</small>
   </footer>
 </div>
 
